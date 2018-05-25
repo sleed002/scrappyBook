@@ -145,17 +145,17 @@ Alice
 
 ## Wireframes
 <p style="text-align:center">
-
+•	Home Page
 <img src="images/home-page.png">
-<br />
+•	Users Page
 <img src="images/users-page.png">
-<br />
+•	Single User Page
 <img src="images/single-user.png">
-<br />
-<img src="images/pop-up-single-user.png
-<br />
-<img src="images/story-entry-single-user.png
-<br />
+•	Single User Page (Pop up update)
+<img src="images/pop-up-single-user.png">
+•	Single User Story Entry
+<img src="images/story-entry-single-user.png">
+•	Single User New Story Added Page
 <img src="images/new-story-added.png">
-<br />
+
 </p>
