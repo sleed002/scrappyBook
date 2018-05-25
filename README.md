@@ -147,10 +147,15 @@ Alice
 <p style="text-align:center">
 
 <img src="images/home-page.png">
+<br />
 <img src="images/users-page.png">
+<br />
 <img src="images/single-user.png">
-<img src="images/pop-up-single-user.png">
-<img src="images/story-entry-single-user.png">
+<br />
+<img src="images/pop-up-single-user.png
+<br />
+<img src="images/story-entry-single-user.png
+<br />
 <img src="images/new-story-added.png">
-
+<br />
 </p>
