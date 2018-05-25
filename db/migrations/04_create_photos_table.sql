@@ -8,3 +8,11 @@ CREATE TABLE photos(
   ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
   photo_url text NOT NULL
 )
+
+INSERT INTO photos(user_id, post_id, photo_url)
+VALUES('1', '1', 'photo_url' ),
+      ('2', '2', 'photo_url'),
+      ('3', '3', 'photo_url'),
+      ('4', '4', 'photo_url' );
+
+SELECT * FROM photos;
