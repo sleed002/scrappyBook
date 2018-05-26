@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 4200;
 const bodyParser = require('body-parser');
-// const DoggieRouter = require('./routes/dogs');
-// const TricksRouter = require('./routes/tricks');
+const UserRouter = require('./routes/users');
 const path = require('path');
 // ...
 
@@ -14,6 +13,7 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use('/users', UserRouter)
 
 app.get('/', (req, res) => {
   res.json({message: 'You are on the home page'});
