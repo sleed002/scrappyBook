@@ -1,0 +1,91 @@
+const db = require('.././db/config'),
+      User = {}; //use object to attach all our query methods
+
+
+// Find all the users
+User.find = () => {
+  return db.query(`SELECT * FROM users`)
+};
+
+//Find a single user
+User.findById = userId => {
+  const {id} = userId
+  return db.one(`SELECT * FROM users
+    WHERE user_id = $1`, id)
+};
+
+//Add a single user
+User.save = userData => {
+const {username, user_nickname, user_bio, user_fave_color, user_avatar} = userData;
+return db.one(`INSERT INTO users(username, user_nickname, user_bio, user_fave_color, user_avatar)
+    VALUES($1, $2, $3, $4, $5)
+    RETURNING *`, [username, user_nickname, user_bio, user_fave_color, user_avatar])
+};
+
+//Update a single user
+User.findByIdAndUpdate = (userId, userData) => {
+  const {id} = userId,
+        {username, user_nickname, user_bio, user_fave_color, user_avatar} = userData;
+  return db.one(`UPDATE users
+    SET username = $1, user_nickname = $2, user_bio =$3, user_fave_color = $4, user_avatar = $5
+    WHERE user_id = $6
+    RETURNING *`, [username, user_nickname, user_bio, user_fave_color, user_avatar, id])
+};
+
+//Delete a single user
+User.findByIdAndRemove = userId => {
+  const {id} = userId;
+  return db.one(`DELETE FROM users
+    WHERE user_id = $1
+    RETURNING *`, id)
+};
+
+
+
+
+//
+// WHEN INTERACTING WITH POSTS TABLE, NEED TO JOIN WITH PHOTOS TABLE!
+//
+
+//Find all entries for a single user
+User.findAllPostsOneUser = userId => {
+  const {id} = userId;
+  return db.query(`SELECT * FROM posts
+    WHERE user_id = $1`, id)
+};
+
+//Find one single entry for a single user
+User.findOnePostOneUser = paramsData => {
+  const {userid, postid} = paramsData;
+  return db.one(`SELECT * FROM posts
+    WHERE user_id = $1 AND post_id = $2`, [userid, postid])
+};
+
+//Add an entry for a single user
+User.addOnePostOneUser = (userId, postData) => {
+  const {id} = userId,
+        {post_time_date, post_text} = postData;
+  return db.one(`INSERT INTO posts(user_id, post_time_date, post_text)
+    VALUES($1, $2, $3)
+    RETURNING *`, [id, post_time_date, post_text])
+};
+
+//Update an entry for a single user
+User.findOnePostAndUpdate = (paramsData, postData) => {
+  const {userid, postid} = paramsData,
+        {post_time_date, post_text} = postData;
+  return db.one(`UPDATE posts
+    SET post_time_date = $1, post_text = $2
+    WHERE user_id = $3 AND post_id = $4
+    RETURNING *`, [post_time_date, post_text, userid, postid])
+};
+
+//Delete an entry for a single user
+User.findOnePostAndDelete = paramsData => {
+  const {userid, postid} = paramsData;
+  return db.one(`DELETE FROM posts
+    WHERE user_id = $1 AND post_id = $2
+    RETURNING *`, [userid, postid])
+};
+
+module.exports = User
