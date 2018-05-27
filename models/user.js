@@ -41,12 +41,6 @@ User.findByIdAndRemove = userId => {
 };
 
 
-
-
-//
-// WHEN INTERACTING WITH POSTS TABLE, NEED TO JOIN WITH PHOTOS TABLE!
-//
-
 //Find all entries for a single user
 User.findAllPostsOneUser = userId => {
   const {id} = userId;
@@ -87,5 +81,39 @@ User.findOnePostAndDelete = paramsData => {
     WHERE user_id = $1 AND post_id = $2
     RETURNING *`, [userid, postid])
 };
+
+//Find all photos for a single post for a single user
+//Will return corresponding post & user info
+User.findAllPhotosOnePost = paramsData => {
+  const {userid, postid} = paramsData;
+  return db.query(`SELECT * from photos
+    JOIN posts
+    ON photos.post_id=posts.post_id
+    JOIN users
+    ON posts.user_id = users.user_id
+    WHERE photos.post_id = $1
+    AND users.user_id = $2`, [postid, userid])
+};
+
+//Find one single photo for a single post for a single user
+//Will return corresponding post & user info
+User.findOnePhotoOnePost = paramsData => {
+  const {userid, postid, photoid} = paramsData;
+  return db.one(`SELECT * from photos
+    JOIN posts
+    ON photos.post_id=posts.post_id
+    JOIN users
+    ON posts.user_id = users.user_id
+    WHERE photos.photo_id = $1
+    AND posts.post_id = $2
+    AND users.user_id = $3`, [photoid, postid, userid])
+}
+
+//Add a single photo for a single post for a single user
+
+//Update a single photo for a single post for a single user
+
+//Delte a single photo for a single post for a single user
+
 
 module.exports = User

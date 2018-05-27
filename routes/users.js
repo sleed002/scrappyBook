@@ -111,4 +111,32 @@ UserRouter.delete("/:userid/posts/:postid", (req, res) => {
   });
 });
 
+//GET all the photos for a single post from a single user
+UserRouter.get("/:userid/posts/:postid/photos", (req, res) => {
+  User.findAllPhotosOnePost(req.params)
+  .then(allPhotosOnePost => {
+    res.json(allPhotosOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting all photos for single post"})
+  })
+})
+
+//GET a single photo for a single post from a single user
+UserRouter.get("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+  User.findOnePhotoOnePost(req.params)
+  .then(onePhotoOnePost => {
+    res.json(onePhotoOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting all photos for single post"})
+  })
+})
+
+//POST a single photo for a single post from a single user
+
+//PUT a single photo for a single post from a single user
+
+//DELETE a single photo for a single post from a single user
+
 module.exports = UserRouter;
