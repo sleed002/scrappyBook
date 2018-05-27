@@ -119,6 +119,14 @@ User.addOnePhotoOnePost = (paramsData, photoData) => {
 };
 
 //Update a single photo for a single post for a single user
+User.findOnePhotoAndUpdate = (paramsData, photoData) => {
+  const {postid, photoid} = paramsData,
+        {photo_url} = photoData;
+  return db.one(`UPDATE photos
+    SET photo_url = $1
+    WHERE post_id = $2 AND photo_id = $3
+    RETURNING *`, [photo_url, postid, photoid])
+};
 
 //Delte a single photo for a single post for a single user
 

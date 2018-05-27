@@ -145,6 +145,15 @@ UserRouter.post("/:userid/posts/:postid/photos", (req, res) => {
 })
 
 //PUT a single photo for a single post from a single user
+UserRouter.put("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+  User.findOnePhotoAndUpdate(req.params, req.body)
+  .then(updatedPhotoOnePost => {
+    res.json(updatedPhotoOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting a single photo for single post"})
+  })
+})
 
 //DELETE a single photo for a single post from a single user
 
