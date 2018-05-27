@@ -1,28 +1,67 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  background-image: url("https://images.pexels.com/photos/673648/pexels-photo-673648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: 1200px 550px;
+  background-repeat: no-repeat;
+  /* text-align: center; */
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+  text-align: center;
+  font-family: 'Nunito';
+  background-color: #F4C22B;
+  height: 20px;
 }
 
 .App-title {
-  font-size: 1.5em;
+  height: 200px;
+  justify-content: center;
 }
 
 .App-intro {
-  font-size: large;
+  border-top: solid 6px;
+  border-color: #EDF2EB;
+  font-family: 'Kirang Haerang';
+  font-weight: bolder;
+  color: #F2AF2D;
+  text-align: center;
+  font-size: 50px;
+
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.appcolors {
+  font-family: 'Butterfly Kids';
+  color: #F2AF2D;
+}
+
+.NavigationBar {
+  font-family:'Nunito';
+  padding: 10px;
+  font-size: 15px;
+  background-color: white;
+  height: 40px;
+}
+
+.HomeLink {
+  padding: 15px;
+  color: #6B7C8E;
+}
+
+.UsersLink {
+  color: #6B7C8E;
+}
+
+Button {
+  font-family: 'Nunito' !important;
+  background-color: #4067C0;
+}
+
+footer {
+  border-top: solid 6px;
+  border-color: #EDF2EB;
+  margin-top: 125px;
+  font-family: 'Nunito';
+  text-align: center;
+  color: #6B7C8E;
+  font-weight: 500;
+
 }
