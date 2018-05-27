@@ -140,7 +140,7 @@ UserRouter.post("/:userid/posts/:postid/photos", (req, res) => {
     res.json(newPhotoOnePost);
   }).catch(error => {
     console.log(error);
-    res.status(500).json({message: "Issue with getting posting a single photo for single post"})
+    res.status(500).json({message: "Issue with posting a single photo for single post"})
   })
 })
 
@@ -151,10 +151,19 @@ UserRouter.put("/:userid/posts/:postid/photos/:photoid", (req, res) => {
     res.json(updatedPhotoOnePost);
   }).catch(error => {
     console.log(error);
-    res.status(500).json({message: "Issue with getting a single photo for single post"})
+    res.status(500).json({message: "Issue with putting a single photo for single post"})
   })
 })
 
 //DELETE a single photo for a single post from a single user
+UserRouter.delete("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+  User.findOnePhotoAndDelete(req.params)
+  .then(deletedPhoto => {
+    res.json(deletedPhoto);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with deleting a single photo for single post"})
+  })
+})
 
 module.exports = UserRouter;

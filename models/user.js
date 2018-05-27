@@ -128,7 +128,12 @@ User.findOnePhotoAndUpdate = (paramsData, photoData) => {
     RETURNING *`, [photo_url, postid, photoid])
 };
 
-//Delte a single photo for a single post for a single user
-
+//Delete a single photo for a single post for a single user
+User.findOnePhotoAndDelete = paramsData => {
+  const {postid, photoid} = paramsData;
+  return db.one(`DELETE FROM photos
+    WHERE post_id = $1 AND photo_id = $2
+    RETURNING *`, [postid, photoid])
+};
 
 module.exports = User
