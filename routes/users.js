@@ -111,4 +111,59 @@ UserRouter.delete("/:userid/posts/:postid", (req, res) => {
   });
 });
 
+//GET all the photos for a single post from a single user
+UserRouter.get("/:userid/posts/:postid/photos", (req, res) => {
+  User.findAllPhotosOnePost(req.params)
+  .then(allPhotosOnePost => {
+    res.json(allPhotosOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting all photos for single post"})
+  })
+})
+
+//GET a single photo for a single post from a single user
+UserRouter.get("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+  User.findOnePhotoOnePost(req.params)
+  .then(onePhotoOnePost => {
+    res.json(onePhotoOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting a single photo for single post"})
+  })
+})
+
+//POST a single photo for a single post from a single user
+UserRouter.post("/:userid/posts/:postid/photos", (req, res) => {
+  User.addOnePhotoOnePost(req.params, req.body)
+  .then(newPhotoOnePost => {
+    res.json(newPhotoOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with posting a single photo for single post"})
+  })
+})
+
+//PUT a single photo for a single post from a single user
+UserRouter.put("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+  User.findOnePhotoAndUpdate(req.params, req.body)
+  .then(updatedPhotoOnePost => {
+    res.json(updatedPhotoOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with putting a single photo for single post"})
+  })
+})
+
+//DELETE a single photo for a single post from a single user
+UserRouter.delete("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+  User.findOnePhotoAndDelete(req.params)
+  .then(deletedPhoto => {
+    res.json(deletedPhoto);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with deleting a single photo for single post"})
+  })
+})
+
 module.exports = UserRouter;
