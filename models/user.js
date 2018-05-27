@@ -110,6 +110,13 @@ User.findOnePhotoOnePost = paramsData => {
 }
 
 //Add a single photo for a single post for a single user
+User.addOnePhotoOnePost = (paramsData, photoData) => {
+  const {userid, postid} = paramsData,
+        {photo_url} = photoData;
+  return db.one(`INSERT INTO photos(post_id, photo_url)
+    VALUES($1, $2)
+    RETURNING *`, [postid, photo_url])
+};
 
 //Update a single photo for a single post for a single user
 

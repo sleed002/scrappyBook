@@ -129,11 +129,20 @@ UserRouter.get("/:userid/posts/:postid/photos/:photoid", (req, res) => {
     res.json(onePhotoOnePost);
   }).catch(error => {
     console.log(error);
-    res.status(500).json({message: "Issue with getting all photos for single post"})
+    res.status(500).json({message: "Issue with getting a single photo for single post"})
   })
 })
 
 //POST a single photo for a single post from a single user
+UserRouter.post("/:userid/posts/:postid/photos", (req, res) => {
+  User.addOnePhotoOnePost(req.params, req.body)
+  .then(newPhotoOnePost => {
+    res.json(newPhotoOnePost);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting posting a single photo for single post"})
+  })
+})
 
 //PUT a single photo for a single post from a single user
 
