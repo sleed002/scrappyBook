@@ -5,6 +5,9 @@ class PostNew extends React.Component{
   constructor(props){
     super(props);
     //UPDATE POST TIME TO BE AUTOMATIC!
+    //Getting current time & date: https://stackoverflow.com/a/14638063
+    var d = new Date();
+    this.state = {post_text: "", post_time_date: d.toLocaleString()}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
