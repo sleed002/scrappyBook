@@ -4,7 +4,6 @@ import axios from 'axios';
 class PostNew extends React.Component{
   constructor(props){
     super(props);
-    //UPDATE POST TIME TO BE AUTOMATIC!
     //Getting current time & date: https://stackoverflow.com/a/14638063
     var d = new Date();
     this.state = {post_text: "", post_time_date: d.toLocaleString()}
@@ -17,9 +16,9 @@ class PostNew extends React.Component{
     const {post_time_date} = this.state;
     return(
       <form onSubmit={this.handleSubmit}>
-        Post Text:
+        My Scrapbook Entry:
         <br/>
-        <textarea value={post_text} name="post_text" onChange={this.handleChange} placeholder="text here!" />
+        <textarea value={post_text} name="post_text" onChange={this.handleChange} placeholder="What did you do today?" />
         <br/>
         <input value={post_time_date} onChange={this.handleChange} name="post_time_date" />
         <br/>
