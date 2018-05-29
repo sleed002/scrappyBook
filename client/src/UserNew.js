@@ -41,13 +41,15 @@ class UserNew extends React.Component{
           <br/>
           <input value={user_fave_color} name="user_fave_color" onChange={this.handleChange} placeholder="Favorite Color" />
           <br/>
-          <input value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="Avatar URL" />
+          Choose Your Avatar:
+          <br/>
+          {this.renderAvatars(avatars)}
+          {/* <input type="radio" name="user_avatar" value={avatar} /> */}
+          {/* <input type="text" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="Other Avatar URL" /> */}
           <br/>
           <input type="submit" value="Submit User!" />
           <p>*Required Field</p>
         </form>
-        {/* <img src={avatars[0]} width="100px"/> */}
-        {this.renderAvatars(avatars)}
       </div>
     )
   }
@@ -56,15 +58,23 @@ class UserNew extends React.Component{
     console.log("in renderAvatars");
     return (
       <ul>
-        {avatars.map(avatar => this.renderAvatar(avatar))}
+        {/* {avatars.map(avatar => this.renderAvatar(avatar))} */}
+        {avatars.map((avatar,i) => {
+          return (this.renderAvatar(avatar, i))
+        })}
       </ul>
     );
   }
 
-  renderAvatar(avatar){
-    console.log(avatar)
+  renderAvatar(avatar, i){
+    console.log(avatar);
+    console.log(i);
       return(
-        <img src={avatar} alt="avatar" width="100px" />
+        // https://stackoverflow.com/a/21668071
+        <span className={"avatar-"+i}>
+          <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
+          <img src={avatar} alt={"avatar-"+i} width="100px" />
+        </span>
       )
   }
 
