@@ -13,7 +13,7 @@ app.use(express.static(path.resolve(__dirname, './client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/users', UserRouter)
+app.use('/api/users', UserRouter)
 
 app.get('/', (req, res) => {
   res.json({message: 'You are on the home page'});

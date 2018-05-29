@@ -67,6 +67,17 @@ UserRouter.get("/:id/posts", (req, res) => {
   })
 })
 
+//GET all the entries photo arrays for a single user
+UserRouter.get("/:id/postspics", (req, res) => {
+  User.findAllPostsPhotoArr(req.params)
+  .then(allUserPosts => {
+    res.json(allUserPosts);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({message: "Issue with getting all entries' photo arrays for single user"})
+  })
+})
+
 //GET a single entry for a single user
 UserRouter.get("/:userid/posts/:postid", (req, res) => {
   User.findOnePostOneUser(req.params)
