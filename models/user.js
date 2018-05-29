@@ -49,6 +49,7 @@ User.findAllPostsOneUser = userId => {
 };
 
 //Find all photos (& places in array) for all entries for a single user
+//Putting values in array: https://stackoverflow.com/a/37818971
 User.findAllPostsPhotoArr = userId => {
   const {id} = userId;
   return db.query(`SELECT posts.post_id, users.user_id, array_agg(distinct photo_url) as photoarr
