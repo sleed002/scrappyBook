@@ -4,6 +4,7 @@ const port = process.env.PORT || 4200;
 const bodyParser = require('body-parser');
 const UserRouter = require('./routes/users');
 const path = require('path');
+const fileUpload = require('express-fileupload');
 // ...
 
 // make everything in ./client/build public
