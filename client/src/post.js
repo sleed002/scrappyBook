@@ -29,13 +29,14 @@ class postShow extends React.Component {
       return (
         <li key={post.post_id}><Link to={`/users/${post.user_id}/posts/${post.post_id}`}>{post.post_text}</Link>
       </li>
-    )  ;
+    );
+
     }
 
     componentDidMount () {
       const { user_id } = this.props.match.params,
             { post_id } = this.props.match.params;
-      axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
+      axios.get(`/users/${user_id}/posts/${post_id}`).then(res => {
         this.setState({post:res.data})
       });
     }
