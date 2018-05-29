@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './home';
+import Users from './Users';
+import User from './User';
 import postShow from './post';
 import PostNew from './PostNew';
 import { BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
@@ -25,6 +27,8 @@ class App extends Component {
               <Switch>
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/newpost' component={PostNew}/>
+                <Route exact path='/users' component={Users}/>
+                <Route exact path='/users/:user_id' component={User}/>
                 <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
 
               </Switch>
