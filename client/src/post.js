@@ -21,6 +21,10 @@ class postShow extends React.Component {
              <h4>{post.post_id}</h4>
              <p>{post.post_time_date} </p>
              <p>{post.post_text}</p>
+
+           <br />
+           <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
+
         </div>
       );
     }
@@ -36,7 +40,7 @@ class postShow extends React.Component {
     componentDidMount () {
       const { user_id } = this.props.match.params,
             { post_id } = this.props.match.params;
-      axios.get(`/users/${user_id}/posts/${post_id}`).then(res => {
+      axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
         this.setState({post:res.data})
       });
     }
