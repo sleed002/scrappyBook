@@ -48,6 +48,17 @@ User.findAllPostsOneUser = userId => {
     WHERE user_id = $1`, id)
 };
 
+//Find all photos (& places in array) for all entries for a single user
+User.findAllPostsPhotoArr = userId => {
+  const {id} = userId;
+  return db.query(`SELECT posts.post_id, users.user_id, array_agg(distinct photo_url) as photoarr
+    FROM posts
+    JOIN photos ON posts.post_id = photos.post_id
+    JOIN users ON posts.user_id = users.user_id
+    WHERE users.user_id = $1
+    GROUP BY 1,2`, id)
+};
+
 //Find one single entry for a single user
 User.findOnePostOneUser = paramsData => {
   const {userid, postid} = paramsData;
