@@ -71,8 +71,8 @@ class User extends React.Component {
     const { match, history } = this.props;
     const { id } = match.params;
 
-    axios.delete(`/api/user/${id}`).then(res => {
-      history.push('/user'); // another way to redirect (props.history.push)
+    axios.delete(`/api/users/${id}`).then(res => {
+      history.push('/users'); // another way to redirect (props.history.push)
     });
   }
 
