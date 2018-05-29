@@ -29,7 +29,7 @@ class App extends Component {
                 <Route exact path='/newpost' component={PostNew}/>
                 <Route exact path='/users' component={Users}/>
                 <Route exact path='/users/:user_id' component={User}/>
-                <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
+                <Route exact path='/api/users/:user_id/posts/:post_id' component={postShow}/>
 
               </Switch>
             </Col>
