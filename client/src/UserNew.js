@@ -19,7 +19,7 @@ const avatars = [
 class UserNew extends React.Component{
   constructor(props){
     super(props);
-    this.state = {username:"", user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
+    this.state = {username:null, user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,22 +30,26 @@ class UserNew extends React.Component{
       // <div>Hi</div>
       <div className="UserAdd">
         <form onSubmit={this.handleSubmit}>
-          New User:
+          <h3>Create a New User</h3>
           <br/>
-          {/* account for non-unique username entry? */}
-          <input value={username} name="username" onChange={this.handleChange} placeholder="Username*" />
+          Username:*<br/>
+          <input value={username} name="username" onChange={this.handleChange} placeholder="username" />
           <br/>
-          <input value={user_nickname} name="user_nickname" onChange={this.handleChange} placeholder="Nickname" />
+          Nickname:<br/>
+          <input value={user_nickname} name="user_nickname" onChange={this.handleChange} placeholder="nickname" />
           <br/>
-          <textarea value={user_bio} name="user_bio" onChange={this.handleChange} placeholder="Tell Us About Yourself!" />
+          Bio:<br/>
+          <textarea value={user_bio} name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!" />
           <br/>
-          <input value={user_fave_color} name="user_fave_color" onChange={this.handleChange} placeholder="Favorite Color" />
+          Favorite Color:<br/>
+          <input value={user_fave_color} name="user_fave_color" onChange={this.handleChange} placeholder="favorite color" />
           <br/>
-          Choose Your Avatar:
-          <br/>
+          Choose Your Avatar:<br/>
           {this.renderAvatars(avatars)}
-          {/* <input type="radio" name="user_avatar" value={avatar} /> */}
-          {/* <input type="text" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="Other Avatar URL" /> */}
+          <br/>
+          <input type="radio" name="user_avatar" value={user_avatar} />
+          Or enter in your own avatar URL:<br/>
+          <input size="100" type="text" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url" />
           <br/>
           <input type="submit" value="Submit User!" />
           <p>*Required Field</p>
@@ -73,7 +77,7 @@ class UserNew extends React.Component{
         // https://stackoverflow.com/a/21668071
         <span className={"avatar-"+i}>
           <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
-          <img src={avatar} alt={"avatar-"+i} width="100px" />
+          <img src={avatar} alt={"avatar-"+i} width="75px" />
         </span>
       )
   }
@@ -86,8 +90,6 @@ class UserNew extends React.Component{
   }
 
   handleSubmit(e) {
-    // debugger;
-    // const {userid} = this.props.match.params;
     const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
 
     e.preventDefault();
@@ -97,7 +99,7 @@ class UserNew extends React.Component{
       this.props.history.push(`/users/`);
     }).catch(e => {
       console.warn(e);
-      alert("Trouble with posting new user!")
+      alert("Trouble with adding new user! Please enter a unique username!")
     })
   }
 
