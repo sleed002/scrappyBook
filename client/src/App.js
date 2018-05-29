@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './home';
+import UserNew from './UserNew';
 import Users from './Users';
 import User from './User';
 import postShow from './post';
