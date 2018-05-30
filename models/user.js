@@ -69,20 +69,20 @@ User.findOnePostOneUser = paramsData => {
 //Add an entry for a single user
 User.addOnePostOneUser = (userId, postData) => {
   const {id} = userId,
-        {post_time_date, post_text} = postData;
-  return db.one(`INSERT INTO posts(user_id, post_time_date, post_text)
-    VALUES($1, $2, $3)
-    RETURNING *`, [id, post_time_date, post_text])
+        {post_title, post_time_date, post_text} = postData;
+  return db.one(`INSERT INTO posts(user_id, post_title, post_time_date, post_text)
+    VALUES($1, $2, $3, $4)
+    RETURNING *`, [id, post_title, post_time_date, post_text])
 };
 
 //Update an entry for a single user
 User.findOnePostAndUpdate = (paramsData, postData) => {
   const {userid, postid} = paramsData,
-        {post_time_date, post_text} = postData;
+        {post_title, post_time_date, post_text} = postData;
   return db.one(`UPDATE posts
-    SET post_time_date = $1, post_text = $2
-    WHERE user_id = $3 AND post_id = $4
-    RETURNING *`, [post_time_date, post_text, userid, postid])
+    SET post_title = $1, post_time_date = $2, post_text = $3
+    WHERE user_id = $4 AND post_id = $5
+    RETURNING *`, [post_title, post_time_date, post_text, userid, postid])
 };
 
 //Delete an entry for a single user
@@ -124,23 +124,20 @@ User.findOnePhotoOnePost = paramsData => {
 User.addOnePhotoOnePost = (paramsData, photoData) => {
   console.log(paramsData)
   const {postid} = paramsData,
-        {url} = photoData;
-        console.log(photoData)
-        console.log(url)
-        console.log(postid)
-  return db.one(`INSERT INTO photos(post_id, photo_url)
-    VALUES($1, $2)
-    RETURNING *`, [postid, url])
+        {photo_url, photo_caption, photo_public_id} = photoData;
+  return db.one(`INSERT INTO photos(post_id, photo_url, photo_caption, photo_public_id)
+    VALUES($1, $2, $3, $4)
+    RETURNING *`, [postid, photo_url, photo_caption, photo_public_id])
 };
 
 //Update a single photo for a single post for a single user
 User.findOnePhotoAndUpdate = (paramsData, photoData) => {
   const {postid, photoid} = paramsData,
-        {photo_url} = photoData;
+        {photo_url, photo_caption, photo_public_id} = photoData;
   return db.one(`UPDATE photos
-    SET photo_url = $1
-    WHERE post_id = $2 AND photo_id = $3
-    RETURNING *`, [photo_url, postid, photoid])
+    SET photo_url = $1, photo_caption = $2, photo_public_id = $3
+    WHERE post_id = $4 AND photo_id = $5
+    RETURNING *`, [photo_url, photo_caption, photo_public_id, postid, photoid])
 };
 
 //Delete a single photo for a single post for a single user
