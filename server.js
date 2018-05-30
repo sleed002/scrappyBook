@@ -10,7 +10,7 @@ const fileUpload = require('express-fileupload');
 // make everything in ./client/build public
 app.use(express.static(path.resolve(__dirname, './client/build')));
 
-
+app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 

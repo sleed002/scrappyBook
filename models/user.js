@@ -1,7 +1,6 @@
 const db = require('.././db/config'),
       User = {}; //use object to attach all our query methods
 
-
 // Find all the users
 User.find = () => {
   return db.query(`SELECT * FROM users`)
@@ -123,11 +122,15 @@ User.findOnePhotoOnePost = paramsData => {
 
 //Add a single photo for a single post for a single user
 User.addOnePhotoOnePost = (paramsData, photoData) => {
-  const {userid, postid} = paramsData,
-        {photo_url} = photoData;
+  console.log(paramsData)
+  const {postid} = paramsData,
+        {url} = photoData;
+        console.log(photoData)
+        console.log(url)
+        console.log(postid)
   return db.one(`INSERT INTO photos(post_id, photo_url)
     VALUES($1, $2)
-    RETURNING *`, [postid, photo_url])
+    RETURNING *`, [postid, url])
 };
 
 //Update a single photo for a single post for a single user
