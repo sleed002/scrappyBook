@@ -6,5 +6,5 @@ CREATE TABLE photos(
   -- ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
   post_id integer REFERENCES posts(post_id)
   ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
-  photo_url text NOT NULL
+  photo_url varchar(2000) NOT NULL
 )

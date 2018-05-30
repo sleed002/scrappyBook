@@ -50,7 +50,8 @@ class User extends React.Component {
     return (
       <div key={post.post_id} className='Post'>
         <ul>
-          <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3>
+          {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3> */}
+          <h3><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h3>
           <p>{post.post_text}</p>
           {this.state.photos.map(photo => this.renderPhotos(photo, postid))}
         </ul>
