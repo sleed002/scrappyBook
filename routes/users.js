@@ -189,7 +189,7 @@ UserRouter.get("/:userid/posts/:postid/photos", (req, res) => {
 })
 
 //GET a single photo for a single post from a single user
-UserRouter.get("/:userid/posts/:postid/photos/:photoid", (req, res) => {
+UserRouter.get("/:userid/posts/:postid/photos/:photo_public_id", (req, res) => {
   User.findOnePhotoOnePost(req.params)
   .then(onePhotoOnePost => {
     res.json(onePhotoOnePost);

@@ -109,15 +109,15 @@ User.findAllPhotosOnePost = paramsData => {
 //Find one single photo for a single post for a single user
 //Will return corresponding post & user info
 User.findOnePhotoOnePost = paramsData => {
-  const {userid, postid, photoid} = paramsData;
+  const {userid, postid, photo_public_id} = paramsData;
   return db.one(`SELECT * from photos
     JOIN posts
     ON photos.post_id=posts.post_id
     JOIN users
     ON posts.user_id = users.user_id
-    WHERE photos.photo_id = $1
+    WHERE photos.photo_public_id = $1
     AND posts.post_id = $2
-    AND users.user_id = $3`, [photoid, postid, userid])
+    AND users.user_id = $3`, [photo_public_id, postid, userid])
 }
 
 //Add a single photo for a single post for a single user
