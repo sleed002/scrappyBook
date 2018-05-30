@@ -14,6 +14,7 @@ class PostNew extends React.Component{
   render(){
     const {post_title, post_text, post_time_date} = this.state;
     return(
+      <div>
       <form onSubmit={this.handleSubmit}>
         My Scrapbook Entry:
         <br/>
@@ -25,8 +26,27 @@ class PostNew extends React.Component{
         <br/>
         <input type="submit" value="Submit Post!" />
       </form>
+
+      <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
+
+    </div>
     )
   }
+
+  fileHandler = (event) => {
+  this.setState({selectedFile: event.target.files[0]})
+}
+
+uploadHandler = () => {
+  const {match, history } = this.props;
+  const { user_id } = match.params;
+  const { post_id } = match.params;
+  const formData = new FormData()
+  formData.append('sampleFile', this.state.selectedFile, this.state.selectedFile.name)
+  axios.post(`/api/users/${user_id}/posts/${post_id}`, formData).then(res => {
+    history.push('/users');
+})
+};
 
   handleChange(e) {
     const {value, name} = e.target;
@@ -38,6 +58,7 @@ class PostNew extends React.Component{
   handleSubmit(e) {
     const {userid} = this.props.match.params;
     const {post_title, post_text, post_time_date} = this.state;
+    this.uploadHandler(userid, )
 
     e.preventDefault();
 

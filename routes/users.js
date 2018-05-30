@@ -130,9 +130,9 @@ UserRouter.post("/:userid/posts/:postid", (req, res) => {
     {resource_type: "auto", image_metadata: true},
     function(error, result) {
       if (error) console.log(error);
-      let url = result.secure_url
-      let public = result.public_id
-      let photoAdd = {public: public, url: url}
+      let photo_url = result.secure_url
+      let photo_public_id = result.public_id
+      let photoAdd = {photo_url: photo_url, photo_public_id: photo_public_id}
 
     User.addOnePhotoOnePost(req.params, photoAdd)
     .then(updatedUserPost => {

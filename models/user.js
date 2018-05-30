@@ -124,10 +124,10 @@ User.findOnePhotoOnePost = paramsData => {
 User.addOnePhotoOnePost = (paramsData, photoData) => {
   console.log(paramsData)
   const {postid} = paramsData,
-        {photo_url, photo_caption, photo_public_id} = photoData;
-  return db.one(`INSERT INTO photos(post_id, photo_url, photo_caption, photo_public_id)
+        {photo_url, photo_public_id, photo_caption} = photoData;
+  return db.one(`INSERT INTO photos(post_id, photo_url, photo_public_id, photo_caption)
     VALUES($1, $2, $3, $4)
-    RETURNING *`, [postid, photo_url, photo_caption, photo_public_id])
+    RETURNING *`, [postid, photo_url, photo_public_id, photo_caption])
 };
 
 //Update a single photo for a single post for a single user
