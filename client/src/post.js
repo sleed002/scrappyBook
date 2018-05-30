@@ -5,15 +5,16 @@ import { Link } from 'react-router-dom';
 class postShow extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {post:null};
+    this.state = {post:null, photos: []};
   }
 
   render() {
-    const { post } = this.state;
+    const { post, photos } = this.state;
     if (!post) {
       return <div>Looking for Post..</div>;}
 
       const {post_id, user_id, post_title, post_time_date, post_text} = post;
+      const {photo_url, photo_caption, photo_public_id} = photos;
       console.log(post)
 
       return(
@@ -22,6 +23,9 @@ class postShow extends React.Component {
              <h4>{post.post_title} </h4>
              <p>{post.post_time_date} </p>
              <p>{post.post_text}</p>
+             <div className="Photos">
+               {photos.map(photo => this.renderPhotos(photo))}
+             </div>
 
              <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
              <button onClick={this.uploadHandler}>Upload!</button>
@@ -60,11 +64,23 @@ uploadHandler = (event) => {
       });
     }
 
+    renderPhotos (photo) {
+        return (
+          <div className="PhotoAndId">
+            <img key={photo.photo_id} src={photo.photo_url} width="400px"/>
+            <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p>
+          </div>
+        );
+    }
+
     componentDidMount () {
       const { user_id } = this.props.match.params,
             { post_id } = this.props.match.params;
       axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
         this.setState({post:res.data})
+      });
+      axios.get(`/api/users/${user_id}/posts/${post_id}/photos`).then(res => {
+        this.setState({photos: res.data});
       });
     }
   }
