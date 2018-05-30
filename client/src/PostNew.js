@@ -27,26 +27,26 @@ class PostNew extends React.Component{
         <input type="submit" value="Submit Post!" />
       </form>
 
-      <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
+      {/* <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/> */}
 
     </div>
     )
   }
 
-  fileHandler = (event) => {
-  this.setState({selectedFile: event.target.files[0]})
-}
-
-uploadHandler = () => {
-  const {match, history } = this.props;
-  const { user_id } = match.params;
-  const { post_id } = match.params;
-  const formData = new FormData()
-  formData.append('sampleFile', this.state.selectedFile, this.state.selectedFile.name)
-  axios.post(`/api/users/${user_id}/posts/${post_id}`, formData).then(res => {
-    history.push('/users');
-})
-};
+//   fileHandler = (event) => {
+//   this.setState({selectedFile: event.target.files[0]})
+// }
+//
+// uploadHandler = () => {
+//   const {match, history } = this.props;
+//   const { user_id } = match.params;
+//   const { post_id } = match.params;
+//   const formData = new FormData()
+//   formData.append('sampleFile', this.state.selectedFile, this.state.selectedFile.name)
+//   axios.post(`/api/users/${user_id}/posts/${post_id}`, formData).then(res => {
+//     history.push('/users');
+// })
+// };
 
   handleChange(e) {
     const {value, name} = e.target;
@@ -58,13 +58,13 @@ uploadHandler = () => {
   handleSubmit(e) {
     const {userid} = this.props.match.params;
     const {post_title, post_text, post_time_date} = this.state;
-    this.uploadHandler(userid, )
 
     e.preventDefault();
 
     axios.post(`/api/users/${userid}/posts`, {post_title, post_text, post_time_date})
     .then(res => {
-      this.props.history.push(`/users/${userid}`);
+      this.props.history.push(`/users/${userid}`)
+      // this.uploadHandler();
     }).catch(e => {
       console.warn(e);
       alert("Trouble with posting new user entry!")
