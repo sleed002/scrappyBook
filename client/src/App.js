@@ -27,7 +27,6 @@ class App extends Component {
             <Col>
               <Switch>
                 <Route exact path='/' component={Home}/>
-                <Route exact path='/newpost' component={PostNew}/>
                 <Route exact path='/users' component={Users}/>
                 <Route exact path='/users/:id' component={User}/>
                 <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>

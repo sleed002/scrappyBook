@@ -14,6 +14,7 @@ class postShow extends React.Component {
       return <div>Looking for Post..</div>;}
 
       const {post_id, user_id, post_time_date, post_text} = post;
+      console.log(post)
 
       return(
         <div className="postShow">
@@ -22,6 +23,11 @@ class postShow extends React.Component {
              <p>{post.post_time_date} </p>
              <p>{post.post_text}</p>
 
+
+
+             <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
+             <button onClick={this.uploadHandler}>Upload!</button>
+
            <br />
            <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
 
@@ -29,13 +35,21 @@ class postShow extends React.Component {
       );
     }
 
-    renderPostLink(post) {
-      return (
-        <li key={post.post_id}><Link to={`/users/${post.user_id}/posts/${post.post_id}`}>{post.post_text}</Link>
-      </li>
-    );
+  fileHandler = (event) => {
+  this.setState({selectedFile: event.target.files[0]})
+}
 
-    }
+uploadHandler = (event) => {
+  const {match, history } = this.props;
+  const { user_id } = match.params;
+  const { post_id } = match.params;
+  const formData = new FormData()
+  formData.append('sampleFile', this.state.selectedFile, this.state.selectedFile.name)
+  axios.post(`/api/users/${user_id}/posts/${post_id}`, formData).then(res => {
+    history.push('/users');
+})
+};
+
 
     componentDidMount () {
       const { user_id } = this.props.match.params,

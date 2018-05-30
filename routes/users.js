@@ -1,6 +1,11 @@
 const express = require('express');
 const UserRouter = express.Router();
 const User = require('.././models/user')
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+var cloudinary = require('cloudinary');
+require('dotenv').config();
+
 
 //GET all the users
 UserRouter.get("/", (req, res) => {
@@ -86,6 +91,56 @@ UserRouter.get("/:userid/posts/:postid", (req, res) => {
   }).catch(error => {
     console.log(error);
     res.status(500).json({message: "Issue with getting single entry for single user"});
+  });
+});
+
+UserRouter.post("/:userid/posts/:postid", (req, res) => {
+  if (!req.params)
+  return res.status(400).send('No files were uploaded.');
+  //https://www.npmjs.com/package/express-fileupload
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.sampleFile;
+
+  if (sampleFile.name===undefined) {
+    return false; //if no file is selected do not allow upload to continue
+  }
+  if (sampleFile.name === 'image.jpg') {
+    sampleFile.name = Math.floor(Math.random() * Math.floor(1000))+ ".jpg"
+  } //for pics taken on my phone's 'take photo' function, all images are called
+  //'image.jpg' and so each new upload would overwrite the previous.  I decided
+  //to change the file name of these to a random number so that they remain unique
+  let id = req.params.userid;
+  cloudinary.config({
+    cloud_name: 'fotobooth',
+    api_key: process.env.APIKEY,
+    api_secret: process.env.APISECRET
+  });
+
+  mkdirp('Images/'+ id + "/", function(err) {
+  }); //make a directory folder using each event ID
+  // Use the mv() method to place the file in this folder
+  let path = 'Images/'+ id + "/" + sampleFile.name
+  console.log(path)
+  sampleFile.mv(path, function(err) {
+    if (err)
+    return res.status(500).send(err);
+  });
+
+ cloudinary.v2.uploader.upload(path,
+    {resource_type: "auto", image_metadata: true},
+    function(error, result) {
+      if (error) console.log(error);
+      let url = result.secure_url
+      let public = result.public_id
+      let photoAdd = {public: public, url: url}
+
+    User.addOnePhotoOnePost(req.params, photoAdd)
+    .then(updatedUserPost => {
+      res.json(updatedUserPost);
+    }).catch(error => {
+      console.log(error);
+      res.status(500).json({message: "Issue with putting a single entry for a single user"});
+    });
   });
 });
 
