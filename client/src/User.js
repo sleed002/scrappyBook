@@ -53,20 +53,21 @@ class User extends React.Component {
           {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3> */}
           <h3><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h3>
           <p>{post.post_text}</p>
-          {this.state.photos.map(photo => this.renderPhotos(photo, postid))}
+          {this.state.photos.map(photo => this.renderPhotos(userid, photo, postid))}
         </ul>
       </div>
     );
   }
 
-  renderPhotos (photo, postid) {
+  renderPhotos (userid, photo, postid) {
      let photoId = photo.photo_id
      let photoPostId = photo.post_id
      if(postid === photoPostId){
        return (
          photo.photoarr.map(photoUrl => {
            return(
-               <img key={photoId} src={photoUrl} height="200px"/>
+             <Link to={`/users/${userid}/posts/${postid}`}>
+               <img key={photoId} src={photoUrl} height="200px"/></Link>
            )
          })
        );

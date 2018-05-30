@@ -15,7 +15,6 @@ class postShow extends React.Component {
 
       const {post_id, user_id, post_title, post_time_date, post_text} = post;
       const {photo_url, photo_caption, photo_public_id} = photos;
-      console.log(post)
 
       return(
         <div className="postShow">
@@ -24,6 +23,7 @@ class postShow extends React.Component {
              <p>{post.post_time_date} </p>
              <p>{post.post_text}</p>
              <div className="Photos">
+
                {photos.map(photo => this.renderPhotos(photo))}
              </div>
 
@@ -50,7 +50,7 @@ uploadHandler = (event) => {
   const formData = new FormData()
   formData.append('sampleFile', this.state.selectedFile, this.state.selectedFile.name)
   axios.post(`/api/users/${user_id}/posts/${post_id}`, formData).then(res => {
-    history.push('/users');
+    history.push(`/users/${user_id}`);
 })
 };
 
@@ -65,10 +65,13 @@ uploadHandler = (event) => {
     }
 
     renderPhotos (photo) {
+      console.log(photo)
         return (
           <div className="PhotoAndId">
+            <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
             <img key={photo.photo_id} src={photo.photo_url} width="400px"/>
             <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p>
+            </Link>
           </div>
         );
     }
