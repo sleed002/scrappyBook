@@ -19,7 +19,7 @@ const avatars = [
 class EditUser extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {username:null, user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
+    this.state = {username:"", user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -117,12 +117,13 @@ handleChange (e) {
 
 handleSubmit(e) {
   const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
+  const { id } = this.props.match.params;
 
   e.preventDefault();
 
-  axios.post(`/api/users/`, {username, user_nickname, user_bio, user_fave_color, user_avatar})
+  axios.put(`/api/users/${id}`, {username, user_nickname, user_bio, user_fave_color, user_avatar})
   .then(res => {
-    this.props.history.push(`/users/`);
+    this.props.history.push(`/users/${id}`);
   }).catch(e => {
     console.warn(e);
     alert("Trouble with updating user! Please enter a unique username!")
