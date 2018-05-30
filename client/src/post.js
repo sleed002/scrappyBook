@@ -14,7 +14,7 @@ class postShow extends React.Component {
       return <div>Looking for Post..</div>;}
 
       const {post_id, user_id, post_title, post_time_date, post_text} = post;
-      const {photo_url} = photos; //UPDATE WITH OTHER FIELDS LATER
+      const {photo_url, photo_caption, photo_public_id} = photos;
       console.log(post)
 
       return(
@@ -65,9 +65,11 @@ uploadHandler = (event) => {
     }
 
     renderPhotos (photo) {
-      let photoId = photo.photo_id
         return (
-            <img key={photoId} src={photo.photo_url} height="200px"/>
+          <div className="PhotoAndId">
+            <img key={photo.photo_id} src={photo.photo_url} width="400px"/>
+            <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p>
+          </div>
         );
     }
 
