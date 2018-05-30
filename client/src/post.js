@@ -65,7 +65,6 @@ uploadHandler = (event) => {
     }
 
     renderPhotos (photo) {
-      console.log(photo)
         return (
           <div className="PhotoAndId">
             <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
