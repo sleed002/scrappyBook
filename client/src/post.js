@@ -19,7 +19,6 @@ class postShow extends React.Component {
       return(
         <div className="postShow">
           <h1>More Information On:</h1>
-             <h4>{post.post_id}</h4>
              <h4>{post.post_title} </h4>
              <p>{post.post_time_date} </p>
              <p>{post.post_text}</p>
