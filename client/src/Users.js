@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axios from 'axios';
 
 class Users extends React.Component {
@@ -22,6 +22,7 @@ class Users extends React.Component {
         <ul>
           {users.map(user => this.renderUserLink(user))}
         </ul>
+        <NavLink className="NewUsersLink" exact to="/users/new">Create New User</NavLink>
       </div>
     );
   }

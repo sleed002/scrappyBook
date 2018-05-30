@@ -24,6 +24,8 @@ class postShow extends React.Component {
 
            <br />
            <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
+           <br/>
+           <button onClick={() => this.handleDelete()}>Delete entry</button>
 
         </div>
       );
@@ -35,6 +37,15 @@ class postShow extends React.Component {
       </li>
     );
 
+    }
+
+    handleDelete () {
+      const { match, history } = this.props;
+      const { user_id, post_id } = match.params;
+      // debugger;
+      axios.delete(`/api/users/${user_id}/posts/${post_id}`).then(res => {
+        history.push(`/users/${user_id}/`); // another way to redirect (props.history.push)
+      });
     }
 
     componentDidMount () {
