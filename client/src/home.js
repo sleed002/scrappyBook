@@ -11,13 +11,13 @@ class Home extends Component {
     return (
       <Router>
         <div className="App">
-          <p className="App-intro">
-            <h1 className="App-title"></h1>
+          <div className="App-intro" >
+            <div className="App-title"></div>
             Scr<span className="appcolors">app</span> Book<br />
             <Button color="Secondary" onClick={this.handleSubmit}>
               All Users
             </Button>
-          </p>
+          </div>
         </div>
       </Router>
     );
