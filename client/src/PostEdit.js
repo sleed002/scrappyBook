@@ -12,11 +12,12 @@ class PostEdit extends React.Component {
   }
 
   render() {
-    const {post_text} = this.state;
+    const {post_title, post_text} = this.state;
 
     return(
       <div className="PostEdit">
-        Text: <input value={post_text} name="post_text" onChange={this.handleChange}/>
+        Post Title: <input value={post_title} name="post_title" onChange={this.handleChange}/>
+        Post Text: <input value={post_text} name="post_text" onChange={this.handleChange}/>
       <br />
       <button onClick={this.handleSubmit}>Update Post</button>
       </div>
@@ -33,9 +34,8 @@ class PostEdit extends React.Component {
   handleSubmit() {
     const {user_id} = this.props.match.params;
     const {post_id} = this.props.match.params;
-    const {post_time_date, post_text} = this.state;
-    debugger;
-    axios.put(`/api/users/${user_id}/posts/${post_id}`, {post_time_date, post_text}).then(res => {
+    const {post_title, post_time_date, post_text} = this.state;
+    axios.put(`/api/users/${user_id}/posts/${post_id}`, {post_title, post_time_date, post_text}).then(res => {
       this.props.history.push(`/users/${user_id}/posts/${post_id}`);
     }).catch(e => {
       console.warn(e);
@@ -47,8 +47,8 @@ class PostEdit extends React.Component {
     const {post_id} = this.props.match.params;
     const {user_id} = this.props.match.params;
     axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
-      const {post_time_date, post_text} = res.data;
-      this.setState({post_time_date, post_text});
+      const {post_title, post_time_date, post_text} = res.data;
+      this.setState({post_title, post_time_date, post_text});
     });
   }
 }
