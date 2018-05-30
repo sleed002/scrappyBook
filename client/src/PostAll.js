@@ -52,27 +52,21 @@ class AllPosts extends React.Component {
         <ul>
           {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3> */}
           {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h3> */}
+          <h3>{post.post_title}</h3>
           <p>{post.post_text}</p>
-          {/* {this.state.photos.map(photo => this.renderPhotos(photo, postid))} */}
+          {/* {console.log(post.photoarr)} */}
+          {post.photoarr.map(photo => this.renderPhotos(photo))}
         </ul>
       </div>
     );
   }
 
-  // renderPhotos (photo, postid) {
-  //   let photoId = photo.photo_id
-  //   let photoPostId = photo.post_id
-  //   if(postid === photoPostId){
-  //     return (
-  //       photo.photoarr.map(photoUrl => {
-  //         return(
-  //             <img key={photoId} src={photoUrl} height="200px"/>
-  //         )
-  //       })
-  //     );
-  //   }
-  // }
-  //
+  renderPhotos (photo) {
+    return(
+        <img src={photo} height="400px"/>
+    )
+  }
+
   // handleDelete () {
   //   const { match, history } = this.props;
   //   const { id } = match.params;
