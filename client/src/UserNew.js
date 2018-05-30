@@ -59,7 +59,7 @@ class UserNew extends React.Component{
   }
 
   renderAvatars(avatars){
-    console.log("in renderAvatars");
+    // console.log("in renderAvatars");
     return (
       <ul>
         {/* {avatars.map(avatar => this.renderAvatar(avatar))} */}
@@ -71,8 +71,8 @@ class UserNew extends React.Component{
   }
 
   renderAvatar(avatar, i){
-    console.log(avatar);
-    console.log(i);
+    // console.log(avatar);
+    // console.log(i);
       return(
         // https://stackoverflow.com/a/21668071
         <span className={"avatar-"+i}>
