@@ -8,6 +8,7 @@ import Users from './Users';
 import User from './User';
 import postShow from './post';
 import PostNew from './PostNew';
+import PostEdit from './PostEdit';
 import EditUser from './EditUser.js';
 import { BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
 // SOURCE: https://reactstrap.github.io/
@@ -32,6 +33,7 @@ class App extends Component {
                 <Route exact path='/users/:id/edit' component={EditUser}/>
                 <Route exact path='/users/:id' component={User}/>
                 <Route exact path="/users/:userid/posts/new" component={PostNew} />
+                <Route exact path='/users/:user_id/posts/:post_id/edit' component={PostEdit}/>
                 <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
               </Switch>
             </Col>
