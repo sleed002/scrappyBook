@@ -6,17 +6,18 @@ class PostNew extends React.Component{
     super(props);
     //Getting current time & date: https://stackoverflow.com/a/14638063
     var d = new Date();
-    this.state = {post_text: "", post_time_date: d.toLocaleString()}
+    this.state = {post_title: "", post_text: "", post_time_date: d.toLocaleString()}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render(){
-    const {post_text} = this.state;
-    const {post_time_date} = this.state;
+    const {post_title, post_text, post_time_date} = this.state;
     return(
       <form onSubmit={this.handleSubmit}>
         My Scrapbook Entry:
+        <br/>
+        <input value={post_title} onChange={this.handleChange} name="post_title" placeholder="Your post title!"/>
         <br/>
         <textarea value={post_text} name="post_text" onChange={this.handleChange} placeholder="What did you do today?" />
         <br/>
@@ -35,14 +36,12 @@ class PostNew extends React.Component{
   }
 
   handleSubmit(e) {
-    debugger;
     const {userid} = this.props.match.params;
-    const {post_text} = this.state;
-    const {post_time_date} = this.state;
+    const {post_title, post_text, post_time_date} = this.state;
 
     e.preventDefault();
 
-    axios.post(`/api/users/${userid}/posts`, {post_text, post_time_date})
+    axios.post(`/api/users/${userid}/posts`, {post_title, post_text, post_time_date})
     .then(res => {
       this.props.history.push(`/users/${userid}`);
     }).catch(e => {

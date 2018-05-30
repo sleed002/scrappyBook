@@ -13,17 +13,15 @@ class postShow extends React.Component {
     if (!post) {
       return <div>Looking for Post..</div>;}
 
-      const {post_id, user_id, post_time_date, post_text} = post;
+      const {post_id, user_id, post_title, post_time_date, post_text} = post;
       console.log(post)
 
       return(
         <div className="postShow">
           <h1>More Information On:</h1>
-             <h4>{post.post_id}</h4>
+             <h4>{post.post_title} </h4>
              <p>{post.post_time_date} </p>
              <p>{post.post_text}</p>
-
-
 
              <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
              <button onClick={this.uploadHandler}>Upload!</button>
