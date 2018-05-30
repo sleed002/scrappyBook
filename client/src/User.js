@@ -35,17 +35,22 @@ class User extends React.Component {
         </div>
         <button onClick={() => this.handleDelete()}>Delete a user</button>
         <br/>
-        <Link to={`/user/${users.user_id}/edit`}> Edit </Link>
+        <Link to={`/users/${users.user_id}/edit`}> Edit </Link>
+        <br/>
+        <Link to={`/users/${users.user_id}/posts/new`}> Create New Entry </Link>
+
       </div>
     );
   }
 
   renderPosts (post) {
+    let userid = post.user_id
     let postid = post.post_id
     // console.log(postid)
     return (
       <div key={post.post_id} className='Post'>
         <ul>
+          <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3>
           <p>{post.post_text}</p>
           {this.state.photos.map(photo => this.renderPhotos(photo, postid))}
         </ul>

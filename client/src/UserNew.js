@@ -96,7 +96,7 @@ class UserNew extends React.Component{
 
     axios.post(`/api/users/`, {username, user_nickname, user_bio, user_fave_color, user_avatar})
     .then(res => {
-      this.props.history.push(`/users/`);
+      this.props.history.push(`/users`);
     }).catch(e => {
       console.warn(e);
       alert("Trouble with adding new user! Please enter a unique username!")

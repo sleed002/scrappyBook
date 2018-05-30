@@ -20,19 +20,17 @@ class App extends Component {
           <header className="App-header">Collect Memories, Save Fun</header>
           <div className="NavigationBar">
             <NavLink className="HomeLink" exact to="/">Home</NavLink>
-            <NavLink className="PostNew" exact to="/newpost">Create a Post</NavLink>
             <NavLink className="UsersLink" exact to="/users">Users</NavLink>
           </div>
           <Row>
             <Col>
               <Switch>
                 <Route exact path='/' component={Home}/>
-                <Route exact path='/newpost' component={PostNew}/>
                 <Route exact path='/users' component={Users}/>
-                <Route exact path='/users/:id' component={User}/>
-                <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
                 <Route exact path="/users/new" component={UserNew} />
+                <Route exact path='/users/:id' component={User}/>
                 <Route exact path="/users/:userid/posts/new" component={PostNew} />
+                <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
               </Switch>
             </Col>
           </Row>
