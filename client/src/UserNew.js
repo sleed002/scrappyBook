@@ -16,95 +16,91 @@ const avatars = [
   "https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png"
 ]
 
-class UserNew extends React.Component{
-  constructor(props){
+class UserNew extends React.Component {
+  constructor(props) {
     super(props);
-    this.state = {username:"", user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
+    this.state = {
+      username: "",
+      user_nickname: "",
+      user_bio: "",
+      user_fave_color: "",
+      user_avatar: ""
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  render(){
+  render() {
     const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
-    return(
-       <div className="App">
-         <h3>Create a New User</h3><br/>
-         <div className="container">
-           <form onSubmit={this.handleSubmit}>
-             <div className="AddUser">
+    return (<div className="App">
+      <h3>Create a New User</h3><br/>
+      <div className="container">
+        <form onSubmit={this.handleSubmit}>
+          <div className="AddUser">
 
+            <div className="form-group col-md-2">Username:*<br/>
+              <input value={username} class="form-control" name="username" onChange={this.handleChange} placeholder="username"/>
+            </div>
 
-          <div className="form-group col-md-2">Username:*<br/>
-          <input value={username} class="form-control" name="username" onChange={this.handleChange} placeholder="username" />
-        </div>
+            <div className="form-group col-md-2">
+              Nickname:<br/>
+              <input value={user_nickname} class="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname"/></div><br/>
 
-        <div className="form-group col-md-2">
-          Nickname:<br/>
-          <input value={user_nickname} class="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname" /></div><br/>
+            <div className="form-group col-md-2">Bio:<br/>
+              <textarea value={user_bio} className="form-control" name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!"/>
+              <br/></div>
+            <div className="form-group col-md-2">Favorite Color:<br/>
+              <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color"/>
+            </div><br/>
 
+            <div class="col-md-2"></div>
+            Choose Your Avatar:<br/>
+            <div className="form-group col-md">
+              <label className="rad">{this.renderAvatars(avatars)}</label>
+              <br/></div>
+            <input type="radio" className="form-control" name="user_avatar" value={user_avatar}/>
+            <div class="col-md-2"></div>
 
-        <div className="form-group col-md-2">Bio:<br/>
-          <textarea value={user_bio} className="form-control" name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!" />
-        <br/></div>
-        <div className="form-group col-md-2">Favorite Color:<br/>
-          <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color" />
-        </div><br/>
+            <div className="form-row">
+              <div className="form-group col-md-2">
+                Or enter in your own avatar URL:
+                <input size="100" type="text" className="form-control" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url"/></div>
+            </div>
 
-
-          <div class="col-md-2"></div>
-          Choose Your Avatar:<br/>
-          <div className="form-group col-md">
-          <label className="rad">{this.renderAvatars(avatars)}</label>
-          <br/></div>
-          <input type="radio" className="form-control" name="user_avatar" value={user_avatar} />
-        <div class="col-md-2"></div>
-
-
-        <div className="form-row">
-          <div className="form-group col-md-2">
-          Or enter in your own avatar URL:
-          <input size="100" type="text" className="form-control" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url" /></div>
-        </div>
-
-
-        <div className="form-row">
-          <div className="form-group col-md-2">
-          <input type="submit" className="form-control" value="Submit User!" />
-          <p>*Required Field</p></div>
-        </div>
-       </div>
-     </form>
-   </div>
- </div>
-
-    )
+            <div className="form-row">
+              <div className="form-group col-md-2">
+                <input type="submit" className="form-control" value="Submit User!"/>
+                <p>*Required Field</p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>)
   }
 
-  renderAvatars(avatars){
-    return (
-      <ul>
-        {avatars.map((avatar,i) => {
+  renderAvatars(avatars) {
+    return (<ul>
+      {
+        avatars.map((avatar, i) => {
           return (this.renderAvatar(avatar, i))
-        })}
-      </ul>
-    );
+        })
+      }
+    </ul>);
   }
 
-  renderAvatar(avatar, i){
-      return(
-        // https://stackoverflow.com/a/21668071
-        <span key={"avatar-"+i}>
-          <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
-          <img src={avatar} alt={"avatar-"+i} width="75px" />
-        </span>
-      )
+  renderAvatar(avatar, i) {
+    return (
+    // https://stackoverflow.com/a/21668071
+    <span key={"avatar-" + i}>
+      <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
+      <img src={avatar} alt={"avatar-" + i} width="75px"/>
+    </span>)
   }
 
   handleChange(e) {
     const {value, name} = e.target;
-    this.setState({
-      [name]: value
-    });
+    this.setState({[name]: value});
   }
 
   handleSubmit(e) {
@@ -112,15 +108,13 @@ class UserNew extends React.Component{
 
     e.preventDefault();
 
-    axios.post(`/api/users/`, {username, user_nickname, user_bio, user_fave_color, user_avatar})
-    .then(res => {
+    axios.post(`/api/users/`, {username, user_nickname, user_bio, user_fave_color, user_avatar}).then(res => {
       this.props.history.push(`/users`);
     }).catch(e => {
       console.warn(e);
       alert("Trouble with adding new user! Please enter a unique username!")
     })
   }
-
 
 }
 

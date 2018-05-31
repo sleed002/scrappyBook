@@ -14,21 +14,26 @@ class PostNew extends React.Component{
   render(){
     const {post_title, post_text, post_time_date} = this.state;
     return(
-      <div>
+      <div className="App">
       <form onSubmit={this.handleSubmit}>
-        My Scrapbook Entry:
-        <br/>
-        <input value={post_title} onChange={this.handleChange} name="post_title" placeholder="Your post title!"/>
-        <br/>
-        <textarea value={post_text} name="post_text" onChange={this.handleChange} placeholder="What did you do today?" />
-        <br/>
-        <input value={post_time_date} onChange={this.handleChange} name="post_time_date" />
-        <br/>
-        <input type="submit" value="Submit Post!" />
+
+        <div className="AddPost">My Scrapbook Entry:
+
+          <div className="form-group col-md-2">Post Title:
+            <input value={post_title} className="form-control" onChange={this.handleChange} name="post_title" placeholder="Your post title!"/></div>
+
+            <div className="form-group col-md-2">Post Title:
+              <textarea value={post_text} className="form-control" name="post_text" onChange={this.handleChange} placeholder="What did you do today?" /></div>
+
+            <div className="form-group col-md-2">Date:
+              <input value={post_time_date} className="form-control" onChange={this.handleChange} name="post_time_date" /></div>
+
+            <div className="form-group col-md-2">
+              <input type="submit" className="form-control" value="Submit Post!" />
+            </div>
+        </div>
       </form>
-
       {/* <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/> */}
-
     </div>
     )
   }

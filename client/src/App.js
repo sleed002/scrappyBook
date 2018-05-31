@@ -50,7 +50,6 @@ class App extends Component {
             <a className="navbar-brand" href="/"><Button className="btn btn-sm btn-outline-secondary">Home</Button></a>
             <a className="navbar-brand" href="/users"><Button className="btn btn-sm btn-outline-secondary">Users</Button></a>
             <a className="navbar-brand" href="/posts"><Button className="btn btn-sm btn-outline-secondary">All Posts</Button></a>
-            <a class="navbar-brand" href="/posts"><Button color="secondary">All Posts</Button></a>
 
           </nav>
           </footer>
