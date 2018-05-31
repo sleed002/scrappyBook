@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './PostAll.css';
 
 class AllPosts extends React.Component {
   constructor (props) {
@@ -36,7 +37,7 @@ class AllPosts extends React.Component {
         <Link to={`/users/${users.user_id}/edit`}> Edit </Link>
         <br/>
         <Link to={`/users/${users.user_id}/posts/new`}> Create New Entry </Link> */}
-
+          <h1>All Posts!</h1>
         {posts.map(post => this.renderPosts(post))}
 
       </div>
@@ -48,22 +49,25 @@ class AllPosts extends React.Component {
     // let postid = post.post_id
     // console.log(postid)
     return (
-      <div key={post.post_id} className='Post'>
-        <ul>
-          {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3> */}
-          {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h3> */}
-          <h3>{post.post_title}</h3>
-          <p>{post.post_text}</p>
-          {/* {console.log(post.photoarr)} */}
-          {post.photoarr.map(photo => this.renderPhotos(photo))}
-        </ul>
+      <div className='UserAndPostSection'>
+        <div key={post.user_id} className='UserSection'>
+          <img src={post.user_avatar} alt="user avatar" width="100px"/>
+          <p>{post.username}</p>
+        </div>
+        <div key={post.post_id} className='PostSection'>
+          <ul>
+            <h3><Link to={`/users/${post.user_id}/posts/${post.post_id}`}>{post.post_title}</Link></h3>
+            {/* <p>{post.post_text}</p> */}
+            {post.photoarr.map(photo => this.renderPhotos(photo))}
+          </ul>
+        </div>
       </div>
     );
   }
 
   renderPhotos (photo) {
     return(
-        <img src={photo} height="400px"/>
+        <img src={photo} height="150px" className="PostPreviewImg"/>
     )
   }
 
