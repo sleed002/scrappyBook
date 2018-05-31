@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 import axios from 'axios';
+import { Button, Container, Row, Col } from 'reactstrap';
+
 
 class Users extends React.Component {
   constructor (props) {
@@ -17,13 +19,15 @@ class Users extends React.Component {
     }
 
     return (
+      <div className="App">
       <div className="Users">
         <h3>All Users</h3>
         <ul>
           {users.map(user => this.renderUserLink(user))}
         </ul>
-        <NavLink className="NewUsersLink" exact to="/users/new">Create New User</NavLink>
+        <NavLink className="NewUsersLink" exact to="/users/new"><Button color="btn btn-light">Create New User</Button></NavLink>
       </div>
+    </div>
     );
   }
 
