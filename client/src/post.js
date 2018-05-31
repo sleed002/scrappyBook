@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import MasonryLayout from 'react-masonry-layout';
+
 
 class postShow extends React.Component {
   constructor(props) {
@@ -18,14 +18,6 @@ class postShow extends React.Component {
       return <div>Looking for Post..</div>;
     }
 
-      return(
-        <div className="postShow">
-          <h1>More Information On:</h1>
-             <h4>{post.post_title} </h4>
-             <p>{post_time_date} </p>
-             <p>{post.post_text}</p>
-             <div className="Photos">
-             
     const {post_id, user_id, post_title, post_time_date, post_text} = post;
     const {photo_url, photo_caption, photo_public_id} = photos;
     return (<div className="postShow">
@@ -39,28 +31,13 @@ class postShow extends React.Component {
          </select>
       {photos.map(photo => this.renderPhotos(photo))}
 
-
       {/* <div className="Photos">
                {photos.map(photo => this.renderPhotos(photo))}
-
-             </div>
-
-             <br></br>
-             <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
-             <button onClick={this.uploadHandler}>Upload!</button>
-             <br></br>
-             <br></br>
-               <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
-
-             <button onClick={() => this.handleDelete()}>Delete entry</button>
-
-
              </div> */
       }
 
       <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
       <button onClick={this.uploadHandler}>Upload!</button>
-
 
       <br/>
       <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}>
@@ -97,15 +74,6 @@ class postShow extends React.Component {
     });
   }
 
-
-    renderPhotos (photo) {
-        return (
-          <div className="PhotoAndId">
-            <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
-            <img key={photo.photo_id} className="pic" src={photo.photo_url} width="250px"/>
-            <p>Caption: {photo.photo_caption}</p>
-            </Link>
-
   renderPhotos(photo) {
     return (
       <div className="photoAndId">
@@ -113,16 +81,15 @@ class postShow extends React.Component {
           <div class="card-header">Featured</div>
           <div class="card-body">
             <h5 class="card-title"></h5>
-            <p class="card-text"><img className="imageResize" key={photo.photo_id} src={photo.photo_url} width="400px"/></p>
+            <p class="card-text"><Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} width="400px"/></Link></p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
             <div class="card-footer text-muted">Caption: {photo.photo_caption}<br />Public ID: {photo.photo_public_id}</div>
-
           </div>
         </div>
-        <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
+
           {/* <img key={photo.photo_id} src={photo.photo_url} width="400px"/> */}
           {/* <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p> */}
-        </Link>
+
 
         {/* <h1>More Information On:</h1> */}
         <h4>{photo.post_title}
