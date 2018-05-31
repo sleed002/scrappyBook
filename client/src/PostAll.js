@@ -35,14 +35,16 @@ class AllPosts extends React.Component {
     } else {
       postSnippet = post.post_text.slice(0, 100) + "..."
     }
-    // postSnippet = postSnippet.slice(0, 100)
     return (
-      <div className='UserAndPostSection'>
-        <div key={post.user_id} className='UserSection'>
+      <div key={post.post_id} className='UserAndPostSection'>
+        <div className='UserSection'>
           <img src={post.user_avatar} alt="user avatar" width="100px"/>
-          <p>{post.username}</p>
+          <p><b>Username:</b> {post.username}</p>
+          <p><b>Nickname:</b> {this.ifFieldBlank(post.user_nickname)}</p>
+          <p><b>Bio:</b> {this.ifFieldBlank(post.user_bio)}</p>
+          <p><b>Favorite Color:</b> {this.ifFieldBlank(post.user_fave_color)}</p>
         </div>
-        <div key={post.post_id} className='PostSection'>
+        <div  className='PostSection'>
           <ul>
             <h3><Link to={`/users/${post.user_id}/posts/${post.post_id}`}>{post.post_title}</Link></h3>
             <p>{postSnippet}</p>
@@ -55,7 +57,7 @@ class AllPosts extends React.Component {
 
   renderPhotos (photo) {
     return(
-        <img src={photo} height="150px" className="PostPreviewImg"/>
+        <img key = {photo} src={photo} height="150px" className="PostPreviewImg"/>
     )
   }
 
@@ -63,6 +65,15 @@ class AllPosts extends React.Component {
     axios.get(`/api/posts`).then(res => {
       this.setState({posts: res.data});
     });
+  }
+
+  ifFieldBlank (input) {
+    if(input === undefined){
+      return "n/a";
+    }
+    else{
+      return input;
+    }
   }
 }
 

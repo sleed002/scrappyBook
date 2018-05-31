@@ -19,7 +19,7 @@ const avatars = [
 class UserNew extends React.Component{
   constructor(props){
     super(props);
-    this.state = {username:null, user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
+    this.state = {username:"", user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -60,10 +60,8 @@ class UserNew extends React.Component{
   }
 
   renderAvatars(avatars){
-    // console.log("in renderAvatars");
     return (
       <ul>
-        {/* {avatars.map(avatar => this.renderAvatar(avatar))} */}
         {avatars.map((avatar,i) => {
           return (this.renderAvatar(avatar, i))
         })}
@@ -72,11 +70,9 @@ class UserNew extends React.Component{
   }
 
   renderAvatar(avatar, i){
-    // console.log(avatar);
-    // console.log(i);
       return(
         // https://stackoverflow.com/a/21668071
-        <span className={"avatar-"+i}>
+        <span key={"avatar-"+i}>
           <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
           <img src={avatar} alt={"avatar-"+i} width="75px" />
         </span>

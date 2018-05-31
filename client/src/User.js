@@ -28,7 +28,7 @@ class User extends React.Component {
           <h4>Nickname: {users.user_nickname}</h4>
           <h4>Bio: {users.user_bio}</h4>
           <h4>Favorite Color: {users.user_fave_color}</h4>
-          <h4><img src={users.user_avatar} alt={users.username} /></h4>
+          <h4><img src={users.user_avatar} alt={users.username} height="200px"/></h4>
           <div className="Posts">
             {posts.map(post => this.renderPosts(post))}
           </div>
@@ -46,10 +46,17 @@ class User extends React.Component {
   renderPosts (post) {
     let userid = post.user_id
     let postid = post.post_id
+    const setLength = 100;
+    let postSnippet = "";
+    if(post.post_text.length <= setLength){
+      postSnippet = post.post_text
+    } else {
+      postSnippet = post.post_text.slice(0, 100) + "..."
+    }
     return (
       <ul key={post.post_id}>
         <h3><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h3>
-        <p>{post.post_text}</p>
+        <p>{postSnippet}</p>
         {this.state.photos.map(photo => this.renderPhotos(userid, photo, postid))}
       </ul>
     );

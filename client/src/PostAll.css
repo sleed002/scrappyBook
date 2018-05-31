@@ -1,6 +1,6 @@
 .UserAndPostSection{
   display: inline-block;
-  width: 800px;
+  width: 2000px;
   display: flex;
   align-items: center;
   vertical-align: top;
@@ -14,12 +14,13 @@
   padding: 20px;
   height: 300px;
   margin: 10px;
+  width: 300px;
 }
 
 .PostSection{
   margin: 10px;
   height: 300px;
-  width: 800px;
+  width: 1000px;
   display: inline-block;
   position: relative;
   border: 1px solid black;
