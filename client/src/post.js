@@ -16,9 +16,6 @@ class postShow extends React.Component {
       const {post_id, user_id, post_title, post_time_date, post_text} = post;
       const {photo_url, photo_caption, photo_public_id} = photos;
 
-      let d = post_time_date.toString().split(' ');
-      d = d[1]+" " + d[2]+" " + d[3] + " " + d[4];
-
       return(
         <div className="postShow">
           <h1>More Information On:</h1>
@@ -74,7 +71,7 @@ uploadHandler = (event) => {
           <div className="PhotoAndId">
             <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
             <img key={photo.photo_id} className="pic" src={photo.photo_url} width="250px"/>
-            <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p>
+            <p>Caption: {photo.photo_caption}</p>
             </Link>
           </div>
         );

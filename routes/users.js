@@ -135,6 +135,18 @@ UserRouter.post("/:userid/posts/:postid", (req, res) => {
 
     User.addOnePhotoOnePost(req.params, photoAdd)
     .then(updatedUserPost => {
+      rimraf('Images/'+ id + "/" + sampleFile.name, function(err) {
+        console.log(err)
+        if (err)
+        //rimraf error handle
+        return res.status(500).send(err);
+      })
+      rimraf('Images/'+ id + "/", function(err) {
+        console.log(err)
+        if (err)
+        //rimraf error handle
+        return res.status(500).send(err);
+      })
       res.json(updatedUserPost);
     }).catch(error => {
       console.log(error);
@@ -171,12 +183,6 @@ UserRouter.delete("/:userid/posts/:postid", (req, res) => {
   User.findOnePostAndDelete(req.params)
   .then(deletedUserPost => {
     res.json(deletedUserPost)
-    rimraf('Images/'+ post_id + "/", function(err) {
-       if (err)
-       return res.status(500).send(err);
-     }, (error) => {
-     res.status(400).send('400 Bad Request');
-   })
   }).catch(error => {
     console.log(error);
     res.status(500).json({message: "Issue with deleting a single entry for a single user"});
@@ -229,9 +235,8 @@ UserRouter.put("/:userid/posts/:postid/photos/:photoid", (req, res) => {
 
 //DELETE a single photo for a single post from a single user
 UserRouter.delete("/:userid/posts/:postid/photos/:photo_public_id", (req, res) => {
-  console.log(req.params)
-  let user_id = req.params
-  let post_id = req.params
+  let user_id = req.params.userid
+  let post_id = req.params.postid
   let photo_public_id = req.params.photo_public_id;
   let photoRemove = {post_id: post_id, photo_public_id: photo_public_id}
 
@@ -244,20 +249,14 @@ UserRouter.delete("/:userid/posts/:postid/photos/:photo_public_id", (req, res) =
   cloudinary.v2.uploader.destroy(photo_public_id, function(error, result){
       User.findOnePhotoAndDelete(photoRemove)
         .then(photoRemove=> {
-          // res.json(deletedPhoto);
-          res.redirect(`/:user_id/posts/:post_id`);
-        //https://stackoverflow.com/questions/18052762/remove-directory-which-is-not-empty
-         rimraf('Images/'+ post_id + "/" + photo_public_id, function(err) {
-            if (err)
-            return res.status(500).send(err);
-         }, (error) => {
-          res.status(400).send('400 Bad Request')
-        })
-      }).catch(error => {
-    console.log(error);
-    res.status(500).json({message: "Issue with deleting a single photo for single post"})
+          res.json(photoRemove)
+         }).catch(error => {
+            console.log(error);
+            res.status(500).json({message: "Issue with deleting a single photo for single post"})
+        }),(error) => {
+      res.status(400).send('400 Bad Request')
+      }
     })
-  })
 });
 
 module.exports = UserRouter;
