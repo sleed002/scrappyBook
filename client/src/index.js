@@ -9,8 +9,7 @@ import WebFont from 'webfontloader';
 
 WebFont.load({
   google: {
-    families: ['Kalam', 'Oswald', 'Sacramento', 'Open Sans', 'Butterfly Kids',
-    'Nunito', 'Kirang Haerang', 'Bowlby One SC', 'Raleway Dots', 'Passion One']
+    families: ['Nunito', 'Bowlby One SC', 'Raleway Dots', 'Passion One', 'Quicksand']
   }
 });
 

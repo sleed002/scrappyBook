@@ -2,18 +2,10 @@
   /* SOURCE: https://stackoverflow.com/questions/23362157/how-to-make-a-css-triangle-background-on-a-div-without-using-border-and-image
   SOURCE: https://stackoverflow.com/questions/34108433/html-css-linear-gradient-not-taking-up-full-screen */
   background: linear-gradient(to bottom right, #F7D7D7 0%, #F7D7D7 50%, #FFFFFF 50%, #E3F4EC 100%);
-  height: 150%;
+  height: 120%;
   width: 100%;
   margin: 10px;
-  position: fixed;
 }
-
-/* .App-header {
-  text-align: center;
-  font-family: 'Nunito';
-  background-color: #F4C22B;
-  height: 20px;
-} */
 
 .App-title {
   height: 200px;
@@ -25,15 +17,16 @@
   font-family: 'Bowlby One SC';
   color: #6BBEF2;
   text-align: left;
-  font-size: 120px;
+  font-size: 100px;
   margin: 10px;
   flex-wrap: wrap;
 }
 
+/* APP LETTERS ONLY */
 .appcolors {
   font-family: 'Raleway Dots';
   color: #F6454F;
-  font-size: 175px;
+  font-size: 125px;
 }
 
 h3 {
@@ -44,8 +37,9 @@ h3 {
 }
 
 /* https://www.w3schools.com/howto/howto_css_vertical_line.asp */
+/* HOME PAGE */
 .line {
-  border-left: 6px solid white;
+  border-left: 8px solid white;
   margin-left: 20px;
 }
 
@@ -63,27 +57,30 @@ h3 {
   text-align: right;
 }
 
-.HomeLink {
-  /* padding: 15px; */
-  color: #6B7C8E;
-}
-
-
 .Users {
-  font-size: 40px;
+  font-size: 25px;
+  font-family: 'Nunito';
   text-align: center;
 }
 
-ul {
-  list-style-type: none;
-  text-align: left;
+.card {
+  width: 25% !important;
 }
 
-/* Button {
-  font-family: 'Nunito' !important;
-  background-color: #FFFFFF;
-  color: #6BBEF2 !important;
-} */
+/*SOURCE: https://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets  */
+ul {
+  list-style-type: none;
+  text-align: center;
+  display: inline;
+}
+
+/* https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bootstrap */
+.btn-link {
+  color: black !important;
+  background-color: #F7D7D7 !important;
+  border-color: #F7D7D7 !important;
+  padding: 10px;
+}
 
 .description {
   font-size: 18px;
@@ -92,19 +89,81 @@ ul {
   width: 400px;
   margin-right: 100px;
   font-family: 'Raleway Dots';
-
 }
 
-.UserAdd {
+.rad {
+  width: 500px;
+}
+
+.card text-center {
+  background-color: black;
+  margin: 50px;
+  width: 100%;
+}
+
+.AddUser{
+  height: 500px;
+  padding: 30px;
+  margin-left: 20px;
+}
+
+.Container {
+  margin: 20px;
+}
+
+.User-Info {
+  display: inline-block;
+}
+
+.usersIndicator {
+  color: gray;
+  font-family: 'Quicksand';
+}
+
+.UserImage {
+  float: left;
+  padding: 5px;
+  width: 80%;
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.useravatarimage {
+  height: 100px;
+  width: 100px;
+}
+
+.photo {
   text-align: center;
 }
 
-footer {
- border-color: #EDF2EB;
- margin-top: 125px;
- margin-left: 10px;
- margin-right: 10px;
- font-family: 'Nunito';
- text-align: right;
- color: #6B7C8E;
+.postShow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0px;
+  width: 80%;
+	margin: auto;
+	margin-top: 10px;
+	border: 1px solid rgba(0,0,0,.1);
+}
+
+
+.photoAndId {
+  width: 40%;
+  float: left;
+  padding: 20px;
+}
+
+.card {
+  width: 100% !important;
+}
+
+.imageResize {
+  max-width: 100%;
+
+}
+
+form {
+  margin: 10px;
 }
