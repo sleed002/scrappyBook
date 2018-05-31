@@ -19,7 +19,7 @@ const avatars = [
 class UserNew extends React.Component{
   constructor(props){
     super(props);
-    this.state = {username:null, user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
+    this.state = {username:"", user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,42 +27,62 @@ class UserNew extends React.Component{
   render(){
     const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
     return(
-      // <div>Hi</div>
-      <div className="UserAdd">
-        <form onSubmit={this.handleSubmit}>
-          <h3>Create a New User</h3>
-          <br/>
-          Username:*<br/>
-          <input value={username} name="username" onChange={this.handleChange} placeholder="username" />
-          <br/>
+       <div className="App">
+         <h3>Create a New User</h3><br/>
+         <div className="container">
+           <form onSubmit={this.handleSubmit}>
+             <div className="AddUser">
+
+
+          <div className="form-group col-md-2">Username:*<br/>
+          <input value={username} class="form-control" name="username" onChange={this.handleChange} placeholder="username" />
+        </div>
+
+        <div className="form-group col-md-2">
           Nickname:<br/>
-          <input value={user_nickname} name="user_nickname" onChange={this.handleChange} placeholder="nickname" />
-          <br/>
-          Bio:<br/>
-          <textarea value={user_bio} name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!" />
-          <br/>
-          Favorite Color:<br/>
-          <input value={user_fave_color} name="user_fave_color" onChange={this.handleChange} placeholder="favorite color" />
-          <br/>
+          <input value={user_nickname} class="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname" /></div><br/>
+
+
+        <div className="form-group col-md-2">Bio:<br/>
+          <textarea value={user_bio} className="form-control" name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!" />
+        <br/></div>
+        <div className="form-group col-md-2">Favorite Color:<br/>
+          <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color" />
+        </div><br/>
+
+
+          <div class="col-md-2"></div>
           Choose Your Avatar:<br/>
-          {this.renderAvatars(avatars)}
-          <br/>
-          <input type="radio" name="user_avatar" value={user_avatar} />
-          Or enter in your own avatar URL:<br/>
-          <input size="100" type="text" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url" />
-          <br/>
-          <input type="submit" value="Submit User!" />
-          <p>*Required Field</p>
-        </form>
-      </div>
+          <div className="form-group col-md">
+          <label className="rad">{this.renderAvatars(avatars)}</label>
+          <br/></div>
+          <input type="radio" className="form-control" name="user_avatar" value={user_avatar} />
+        <div class="col-md-2"></div>
+
+
+        <div className="form-row">
+          <div className="form-group col-md-2">
+          Or enter in your own avatar URL:
+          <input size="100" type="text" className="form-control" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url" /></div>
+        </div>
+
+
+        <div className="form-row">
+          <div className="form-group col-md-2">
+          <input type="submit" className="form-control" value="Submit User!" />
+          <p>*Required Field</p></div>
+        </div>
+       </div>
+     </form>
+   </div>
+ </div>
+
     )
   }
 
   renderAvatars(avatars){
-    // console.log("in renderAvatars");
     return (
       <ul>
-        {/* {avatars.map(avatar => this.renderAvatar(avatar))} */}
         {avatars.map((avatar,i) => {
           return (this.renderAvatar(avatar, i))
         })}
@@ -71,11 +91,9 @@ class UserNew extends React.Component{
   }
 
   renderAvatar(avatar, i){
-    // console.log(avatar);
-    // console.log(i);
       return(
         // https://stackoverflow.com/a/21668071
-        <span className={"avatar-"+i}>
+        <span key={"avatar-"+i}>
           <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
           <img src={avatar} alt={"avatar-"+i} width="75px" />
         </span>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 import axios from 'axios';
+import { Button, Container, Row, Col } from 'reactstrap';
+
 
 class Users extends React.Component {
   constructor (props) {
@@ -17,20 +19,33 @@ class Users extends React.Component {
     }
 
     return (
+      <div className="App">
       <div className="Users">
         <h3>All Users</h3>
         <ul>
           {users.map(user => this.renderUserLink(user))}
         </ul>
-        <NavLink className="NewUsersLink" exact to="/users/new">Create New User</NavLink>
+        <NavLink className="NewUsersLink" exact to="/users/new"><Button className="btn btn-link">Create New User</Button></NavLink>
       </div>
+    </div>
     );
   }
 
   renderUserLink (user) {
     return (
       <li key={user.user_id} className="UserName">
-        <Link to={`/users/${user.user_id}`}>{user.username}</Link>
+        <div className="row justify-content-md-center">
+          <div className="col-sm-4">
+            <div className="card-group mb-3">
+              <div className="card">
+                <div class="card-header">UserName</div>
+                <card-body>
+                    <Link to={`/users/${user.user_id}`}>{user.username}</Link>
+                  </card-body>
+                </div>
+              </div>
+            </div>
+          </div>
       </li>
     );
   }

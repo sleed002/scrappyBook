@@ -18,13 +18,23 @@ class Photo extends React.Component {
       const {photo_url, photo_caption, photo_public_id} = photo;
 
       return(
+        <div className="App">
         <div className="photo">
+
+
+
           <h1>{photo.photo_caption}</h1>
              <img src={photo.photo_url} height="400px"></img>
+
              {/* <img src={`http://res.cloudinary.com/fotobooth/image/upload/c_scale,e_grayscale,r_0,w_371/v1527790166/sao0kyby9takvjl3pcnu.gif`} height="400px"></img> */}
+
+
+             {/* <p>{photo.photo_public_id}</p> */}
+
 
            <button onClick={() => this.handleDelete()}>Delete photo</button>
 
+        </div>
         </div>
       );
     }
@@ -34,7 +44,11 @@ class Photo extends React.Component {
       const { user_id, post_id, photo_public_id} = match.params;
 
       axios.delete(`/api/users/${user_id}/posts/${post_id}/photos/${photo_public_id}`).then(res => {
+
         history.push(`/users/${user_id}/posts/${post_id}`);
+
+        history.push(`/users/${user_id}/posts`);
+
       });
     }
 

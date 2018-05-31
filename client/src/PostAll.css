@@ -1,0 +1,34 @@
+.UserAndPostSection{
+  display: inline-block;
+  width: 2000px;
+  display: flex;
+  align-items: center;
+  vertical-align: top;
+}
+
+.UserSection{
+  display: inline-block;
+  position: relative;
+  border: 1px solid black;
+  background-color: rgba(200,200,200,0.4);
+  padding: 20px;
+  height: 300px;
+  margin: 10px;
+  width: 300px;
+}
+
+.PostSection{
+  margin: 10px;
+  height: 300px;
+  width: 1000px;
+  display: inline-block;
+  position: relative;
+  border: 1px solid black;
+  background-color: rgba(200,200,200,0.4);
+  padding: 20px;
+  overflow: scroll;
+}
+
+.PostPreviewImg{
+  margin: 5px;
+}
