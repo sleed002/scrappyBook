@@ -21,6 +21,14 @@ class postShow extends React.Component {
     const {post_id, user_id, post_title, post_time_date, post_text} = post;
     const {photo_url, photo_caption, photo_public_id} = photos;
     return (<div className="postShow">
+      <div className="wrapper" style={{backgroundColor: this.state.backgroundColor}}>
+         <select name="operator" id='bg' onChange={(e) => this.change(e)} value={this.state.value}>
+           <option value="rgb(236, 223, 206)">Peach</option>
+           <option value="rgb(244, 71, 83)">Red</option>
+           <option value="rgb(110, 217, 216)">Teal</option>
+           <option value="rgb(88, 182, 127)">Green</option>
+           <option value="rgb(254, 212, 49)">Yellow</option>
+         </select>
       {photos.map(photo => this.renderPhotos(photo))}
 
       {/* <div className="Photos">
@@ -37,7 +45,9 @@ class postShow extends React.Component {
       </Link>
       <br/>
       <button onClick={() => this.handleDelete()}>Delete entry</button>
-    </div>);
+    </div>
+  </div>
+  );
   }
 
   fileHandler = (event) => {
@@ -100,6 +110,10 @@ class postShow extends React.Component {
       this.setState({photos: res.data});
     });
   }
+
+  change (event){
+       this.setState({backgroundColor: event.target.value});
+   }
 }
 
 export default postShow;
