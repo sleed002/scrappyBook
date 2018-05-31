@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 4200;
 const bodyParser = require('body-parser');
 const UserRouter = require('./routes/users');
+const AllRouter = require('./routes/routeAll');
 const path = require('path');
 const fileUpload = require('express-fileupload');
 // ...
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/api/users', UserRouter)
+app.use('/api/', AllRouter)
 
 app.get('/', (req, res) => {
   res.json({message: 'You are on the home page'});
