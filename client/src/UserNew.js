@@ -53,27 +53,22 @@ class UserNew extends React.Component {
               <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color"/>
             </div><br/>
 
-            <div class="col-md-2"></div>
-            Choose Your Avatar:<br/>
-            <div className="form-group col-md">
-              <label className="rad">{this.renderAvatars(avatars)}</label>
-              <br/></div>
-            <input type="radio" className="form-control" name="user_avatar" value={user_avatar}/>
-            <div class="col-md-2"></div>
 
-            <div className="form-row">
+            Choose Your Avatar:<br/>
+              {this.renderAvatars(avatars)}
+              <br/>
+              <input type="radio" name="user_avatar" value={user_avatar}/>
+
               <div className="form-group col-md-2">
+
                 Or enter in your own avatar URL:
                 <input size="100" type="text" className="form-control" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url"/></div>
-            </div>
 
-            <div className="form-row">
               <div className="form-group col-md-2">
                 <input type="submit" className="form-control" value="Submit User!"/>
                 <p>*Required Field</p>
               </div>
             </div>
-          </div>
         </form>
       </div>
     </div>)

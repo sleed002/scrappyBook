@@ -91,20 +91,11 @@ ul {
   font-family: 'Raleway Dots';
 }
 
-.rad {
-  width: 500px;
-}
 
 .card text-center {
   background-color: black;
   margin: 50px;
   width: 100%;
-}
-
-.AddUser{
-  height: 500px;
-  padding: 30px;
-  margin-left: 20px;
 }
 
 .Container {
