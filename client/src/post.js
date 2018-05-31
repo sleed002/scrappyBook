@@ -16,24 +16,29 @@ class postShow extends React.Component {
       const {post_id, user_id, post_title, post_time_date, post_text} = post;
       const {photo_url, photo_caption, photo_public_id} = photos;
 
+      let d = post_time_date.toString().split(' ');
+      d = d[1]+" " + d[2]+" " + d[3] + " " + d[4];
+
       return(
         <div className="postShow">
           <h1>More Information On:</h1>
              <h4>{post.post_title} </h4>
-             <p>{post.post_time_date} </p>
+             <p>{post_time_date} </p>
              <p>{post.post_text}</p>
              <div className="Photos">
 
                {photos.map(photo => this.renderPhotos(photo))}
              </div>
 
+             <br></br>
              <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
              <button onClick={this.uploadHandler}>Upload!</button>
+             <br></br>
+             <br></br>
+               <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
 
-           <br />
-           <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
-           <br/>
-           <button onClick={() => this.handleDelete()}>Delete entry</button>
+             <button onClick={() => this.handleDelete()}>Delete entry</button>
+
 
         </div>
       );
@@ -68,7 +73,7 @@ uploadHandler = (event) => {
         return (
           <div className="PhotoAndId">
             <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
-            <img key={photo.photo_id} src={photo.photo_url} width="400px"/>
+            <img key={photo.photo_id} className="pic" src={photo.photo_url} width="250px"/>
             <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p>
             </Link>
           </div>

@@ -67,7 +67,7 @@ class User extends React.Component {
          photo.photoarr.map(photoUrl => {
            return(
              <Link to={`/users/${userid}/posts/${postid}`}>
-               <img key={photoId} src={photoUrl} height="200px"/></Link>
+               <img key={photoId} src={photoUrl} class="pic" height="100px"/></Link>
            )
          })
        );

@@ -36,9 +36,9 @@ class Photo extends React.Component {
     handleDelete () {
       const { match, history } = this.props;
       const { user_id, post_id, photo_public_id} = match.params;
-      // debugger;
+
       axios.delete(`/api/users/${user_id}/posts/${post_id}/photos/${photo_public_id}`).then(res => {
-        history.push(`/users/${user_id}/posts`); 
+        history.push(`/users/${user_id}/posts`);
       });
     }
 
@@ -46,7 +46,6 @@ class Photo extends React.Component {
     componentDidMount () {
       const { user_id , post_id, photo_public_id} = this.props.match.params;
 
-            debugger;
       axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
         this.setState({post:res.data})
       });
