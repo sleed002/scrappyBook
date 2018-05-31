@@ -99,6 +99,21 @@ class User extends React.Component {
   }
 
   renderPhotos (userid, photo, postid) {
+
+     let photoId = photo.photo_id
+     let photoPostId = photo.post_id
+     if(postid === photoPostId){
+       return (
+         photo.photoarr.map(photoUrl => {
+           return(
+             <Link to={`/users/${userid}/posts/${postid}`}>
+               <img key={photoId} src={photoUrl} class="pic" height="100px"/></Link>
+           )
+         })
+       );
+     }
+   }
+
     let photoPostId = photo.post_id
     if(postid === photoPostId){
       return (
@@ -115,6 +130,7 @@ class User extends React.Component {
       </span>
     )
   }
+
 
   handleDelete () {
     const { match, history } = this.props;

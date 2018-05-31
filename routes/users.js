@@ -120,7 +120,6 @@ UserRouter.post("/:userid/posts/:postid", (req, res) => {
   }); //make a directory folder using each event ID
   // Use the mv() method to place the file in this folder
   let path = 'Images/'+ id + "/" + sampleFile.name
-  console.log(path)
   sampleFile.mv(path, function(err) {
     if (err)
     return res.status(500).send(err);
@@ -136,6 +135,18 @@ UserRouter.post("/:userid/posts/:postid", (req, res) => {
 
     User.addOnePhotoOnePost(req.params, photoAdd)
     .then(updatedUserPost => {
+      rimraf('Images/'+ id + "/" + sampleFile.name, function(err) {
+        console.log(err)
+        if (err)
+        //rimraf error handle
+        return res.status(500).send(err);
+      })
+      rimraf('Images/'+ id + "/", function(err) {
+        console.log(err)
+        if (err)
+        //rimraf error handle
+        return res.status(500).send(err);
+      })
       res.json(updatedUserPost);
     }).catch(error => {
       console.log(error);
@@ -168,9 +179,10 @@ UserRouter.put("/:userid/posts/:postid", (req, res) => {
 
 //DELETE a single entry for a single user
 UserRouter.delete("/:userid/posts/:postid", (req, res) => {
+  let post_id = req.params.post_id
   User.findOnePostAndDelete(req.params)
   .then(deletedUserPost => {
-    res.json(deletedUserPost);
+    res.json(deletedUserPost)
   }).catch(error => {
     console.log(error);
     res.status(500).json({message: "Issue with deleting a single entry for a single user"});
@@ -222,14 +234,29 @@ UserRouter.put("/:userid/posts/:postid/photos/:photoid", (req, res) => {
 })
 
 //DELETE a single photo for a single post from a single user
-UserRouter.delete("/:userid/posts/:postid/photos/:photoid", (req, res) => {
-  User.findOnePhotoAndDelete(req.params)
-  .then(deletedPhoto => {
-    res.json(deletedPhoto);
-  }).catch(error => {
-    console.log(error);
-    res.status(500).json({message: "Issue with deleting a single photo for single post"})
-  })
-})
+UserRouter.delete("/:userid/posts/:postid/photos/:photo_public_id", (req, res) => {
+  let user_id = req.params.userid
+  let post_id = req.params.postid
+  let photo_public_id = req.params.photo_public_id;
+  let photoRemove = {post_id: post_id, photo_public_id: photo_public_id}
+
+  cloudinary.config({
+  cloud_name: 'fotobooth',
+  api_key: process.env.APIKEY,
+  api_secret: process.env.APISECRET
+  });
+  //delete the photo from its directory and the database
+  cloudinary.v2.uploader.destroy(photo_public_id, function(error, result){
+      User.findOnePhotoAndDelete(photoRemove)
+        .then(photoRemove=> {
+          res.json(photoRemove)
+         }).catch(error => {
+            console.log(error);
+            res.status(500).json({message: "Issue with deleting a single photo for single post"})
+        }),(error) => {
+      res.status(400).send('400 Bad Request')
+      }
+    })
+});
 
 module.exports = UserRouter;

@@ -167,3 +167,7 @@ ul {
 form {
   margin: 10px;
 }
+
+.pic {
+  border: 1px solid black;
+}

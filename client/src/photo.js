@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Photo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {photo:null};
+    this.state = {photo:null, backgroundColor: "rgb(236, 223, 206)"};
   }
 
 
@@ -26,12 +26,12 @@ class Photo extends React.Component {
           <h1>{photo.photo_caption}</h1>
              <img src={photo.photo_url} height="400px"></img>
 
+             {/* <img src={`http://res.cloudinary.com/fotobooth/image/upload/c_scale,e_grayscale,r_0,w_371/v1527790166/sao0kyby9takvjl3pcnu.gif`} height="400px"></img> */}
+
+
              {/* <p>{photo.photo_public_id}</p> */}
 
 
-           {/* <br />
-           <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
-           <br/> */}
            <button onClick={() => this.handleDelete()}>Delete photo</button>
 
         </div>
@@ -42,9 +42,13 @@ class Photo extends React.Component {
     handleDelete () {
       const { match, history } = this.props;
       const { user_id, post_id, photo_public_id} = match.params;
-      // debugger;
+
       axios.delete(`/api/users/${user_id}/posts/${post_id}/photos/${photo_public_id}`).then(res => {
+
+        history.push(`/users/${user_id}/posts/${post_id}`);
+
         history.push(`/users/${user_id}/posts`);
+
       });
     }
 
@@ -52,7 +56,6 @@ class Photo extends React.Component {
     componentDidMount () {
       const { user_id , post_id, photo_public_id} = this.props.match.params;
 
-            debugger;
       axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
         this.setState({post:res.data})
       });
