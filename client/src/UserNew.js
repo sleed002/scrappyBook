@@ -27,9 +27,9 @@ class UserNew extends React.Component{
   render(){
     const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
     return(
-      // <div>Hi</div>
-      <div className="UserAdd">
-        <form onSubmit={this.handleSubmit}>
+       <div className="App">
+         <div className="UserAdd">
+           <form onSubmit={this.handleSubmit}>
           <h3>Create a New User</h3>
           <br/>
           Username:*<br/>
@@ -55,6 +55,7 @@ class UserNew extends React.Component{
           <p>*Required Field</p>
         </form>
       </div>
+    </div>
     )
   }
 

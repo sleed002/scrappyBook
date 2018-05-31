@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import MasonryLayout from 'react-masonry-layout';
 
 class postShow extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class postShow extends React.Component {
 
       return(
         <div className="postShow">
+            })}
           <h1>More Information On:</h1>
              <h4>{post.post_title} </h4>
              <p>{post.post_time_date} </p>
@@ -34,7 +36,6 @@ class postShow extends React.Component {
            <Link to={`/users/${post.user_id}/posts/${post.post_id}/edit`}> Edit </Link>
            <br/>
            <button onClick={() => this.handleDelete()}>Delete entry</button>
-
         </div>
       );
     }

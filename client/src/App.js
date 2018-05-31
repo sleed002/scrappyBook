@@ -19,12 +19,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <header className="App-header">Collect Memories, Save Fun</header>
-          <div className="NavigationBar">
-            <NavLink className="HomeLink" exact to="/">Home</NavLink>
-            <NavLink className="UsersLink" exact to="/users">Users</NavLink>
-          </div>
+
+        <div className="App-header">
+          {/* <header className="App-header">Collect Memories, Save Fun</header> */}
+          {/* <div className="NavigationBar">
+
+            <NavLink className="HomeLink" exact to="/"><Button color="Secondary">Home</Button></NavLink>
+            <NavLink className="UsersLink" exact to="/users"><Button color="Secondary">Users</Button></NavLink>
+          </div> */}
           <Row>
             <Col>
               <Switch>
@@ -40,7 +42,11 @@ class App extends Component {
               </Switch>
             </Col>
           </Row>
-          <footer>Created by FlexFroggies</footer>
+          {/* SOURCE: https://getbootstrap.com/docs/4.1/components/navbar/ */}
+          <nav class="navbar fixed-bottom navbar-light bg-light">
+            <a class="navbar-brand" href="/"><Button color="secondary">Home</Button></a>
+            <a class="navbar-brand" href="/users"><Button color="secondary">Users</Button></a>
+          </nav>
         </div>
       </Router>
     );

@@ -13,11 +13,13 @@ class Home extends Component {
         <div className="App">
           <div className="App-intro" >
             <div className="App-title"></div>
-            Scr<span className="appcolors">app</span> Book<br />
-            <Button color="Secondary" onClick={this.handleSubmit}>
-              All Users
-            </Button>
+            scr<span className="appcolors">app</span><span class="line" /> Book<br />
           </div>
+          <p className="description">Make memories and save them on ScrAPP Book,
+            the online destination for all your fave moments.</p>
+          {/* <Button color="Secondary" onClick={this.handleSubmit}>
+            All Users
+          </Button> */}
         </div>
       </Router>
     );
