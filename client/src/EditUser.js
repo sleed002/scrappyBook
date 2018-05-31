@@ -29,52 +29,72 @@ const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.s
 
 
   return (
+    <div className="App">
     <div className="UserEdit">
       <form onSubmit={this.handleSubmit}>
         <h3>Edit a User</h3>
         <br/>
+
+        <div className="form-group col-md-2">
         Username:*<br/>
-        <input value={username}
+        <input value={username} className="form-control"
                name="username"
                onChange={this.handleChange}
                placeholder="username" />
+             </div>
         <br/>
+
+        <div className="form-group col-md-2">
         Nickname:<br/>
-        <input value={user_nickname}
+        <input value={user_nickname} className="form-control"
                name="user_nickname"
                onChange={this.handleChange}
                placeholder="nickname" />
+             </div>
+
         <br/>
+
+        <div className="form-group col-md-2">
         Bio:<br/>
-        <textarea value={user_bio}
+        <textarea value={user_bio} className="form-control"
                   name="user_bio"
                   onChange={this.handleChange}
                   placeholder="tell us about yourself!" />
+        </div>
+
         <br/>
+        <div className="form-group col-md-2">
         Favorite Color:<br/>
-        <input value={user_fave_color}
+        <input value={user_fave_color} className="form-control"
                name="user_fave_color"
                onChange={this.handleChange}
                placeholder="favorite color" />
-        <br/>
+        <br/><br />
+        </div>
+
         Choose Your Avatar:<br/>
         {this.renderAvatars(avatars)}
         <br/>
         <input type="radio"
                name="user_avatar"
                value={user_avatar} />
+               <div className="form-group col-md-2">
+
         Or enter in your own avatar URL:<br/>
         <input size="100"
                type="text"
-               value={user_avatar}
+               value={user_avatar} className="form-control"
                name="user_avatar"
                onChange={this.handleChange}
                placeholder="avatar image url" />
-        <br/>
+        </div><br/>
+        <div className="form-group col-md-2">
         <input type="submit"
-               value="Submit User!" />
+               value="Submit User!" className="form-control" />
         <p>*Required Field</p>
+      </div>
       </form>
+    </div>
     </div>
   );
 }

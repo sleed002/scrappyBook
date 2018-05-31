@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './home';
@@ -10,6 +9,8 @@ import postShow from './post';
 import PostNew from './PostNew';
 import PostEdit from './PostEdit';
 import EditUser from './EditUser.js';
+import AllPosts from './PostAll';
+
 import photo from './photo'
 import { BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
 // SOURCE: https://reactstrap.github.io/
@@ -39,27 +40,25 @@ class App extends Component {
                 <Route exact path='/users/:user_id/posts/:post_id/edit' component={PostEdit}/>
                 <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
                 <Route exact path='/users/:user_id/posts/:post_id/photos/:photo_public_id' component={photo}/>
+                <Route exact path='/posts' component={AllPosts}/>
               </Switch>
             </Col>
           </Row>
           {/* SOURCE: https://getbootstrap.com/docs/4.1/components/navbar/ */}
-          <nav class="navbar fixed-bottom navbar-light bg-light">
-            <a class="navbar-brand" href="/"><Button color="secondary">Home</Button></a>
-            <a class="navbar-brand" href="/users"><Button color="secondary">Users</Button></a>
+          <footer>
+          <nav className="navbar fixed-bottom navbar-light bg-light">
+            <a className="navbar-brand" href="/"><Button className="btn btn-sm btn-outline-secondary">Home</Button></a>
+            <a className="navbar-brand" href="/users"><Button className="btn btn-sm btn-outline-secondary">Users</Button></a>
+            <a className="navbar-brand" href="/posts"><Button className="btn btn-sm btn-outline-secondary">All Posts</Button></a>
+            <a class="navbar-brand" href="/posts"><Button color="secondary">All Posts</Button></a>
+
           </nav>
+          </footer>
         </div>
       </Router>
     );
   }
 }
-//
-// {
-//   <NavLink className="HomeLink" exact to="/users">Home</NavLink>
-//   <NavLink className="UsersLink" exact to="/users/:id">Users</NavLink>
-//   <NavLink exact to="/users/:id/posts">Chat App</NavLink>
-//   <NavLink exact to="/users/:id/posts/:postid">Chat App</NavLink>
-//   <NavLink exact to="/users/:id/posts/:postid/photos/photoid">Chat App</NavLink>
-//
-//   }
-//
+
+
 export default App;
