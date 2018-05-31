@@ -21,33 +21,21 @@ class AllPosts extends React.Component {
 
     return (
       <div className={className}>
-        {/* <div className='User-Info'>
-          <h3>User Information</h3>
-          <h4>Name: {users.username}</h4>
-          <h4>Nickname: {users.user_nickname}</h4>
-          <h4>Bio: {users.user_bio}</h4>
-          <h4>Favorite Color: {users.user_fave_color}</h4>
-          <h4><img src={users.user_avatar} alt={users.username} /></h4>
-          <div className="Posts">
-            {posts.map(post => this.renderPosts(post))}
-          </div>
-        </div>
-        <button onClick={() => this.handleDelete()}>Delete a user</button>
-        <br/>
-        <Link to={`/users/${users.user_id}/edit`}> Edit </Link>
-        <br/>
-        <Link to={`/users/${users.user_id}/posts/new`}> Create New Entry </Link> */}
           <h1>All Posts!</h1>
         {posts.map(post => this.renderPosts(post))}
-
       </div>
     );
   }
 
   renderPosts (post) {
-    // let userid = post.user_id
-    // let postid = post.post_id
-    // console.log(postid)
+    const setLength = 100;
+    let postSnippet = "";
+    if(post.post_text.length <= setLength){
+      postSnippet = post.post_text
+    } else {
+      postSnippet = post.post_text.slice(0, 100) + "..."
+    }
+    // postSnippet = postSnippet.slice(0, 100)
     return (
       <div className='UserAndPostSection'>
         <div key={post.user_id} className='UserSection'>
@@ -57,7 +45,7 @@ class AllPosts extends React.Component {
         <div key={post.post_id} className='PostSection'>
           <ul>
             <h3><Link to={`/users/${post.user_id}/posts/${post.post_id}`}>{post.post_title}</Link></h3>
-            {/* <p>{post.post_text}</p> */}
+            <p>{postSnippet}</p>
             {post.photoarr.map(photo => this.renderPhotos(photo))}
           </ul>
         </div>
@@ -70,16 +58,6 @@ class AllPosts extends React.Component {
         <img src={photo} height="150px" className="PostPreviewImg"/>
     )
   }
-
-  // handleDelete () {
-  //   const { match, history } = this.props;
-  //   const { id } = match.params;
-  //
-  //   axios.delete(`/api/users/${id}`).then(res => {
-  //     history.push('/users'); // another way to redirect (props.history.push)
-  //   });
-  // }
-
 
   componentDidMount () {
     axios.get(`/api/posts`).then(res => {
