@@ -20,9 +20,11 @@ class AllPosts extends React.Component {
     }
 
     return (
-      <div className={className}>
-          <h1>All Posts!</h1>
-        {posts.map(post => this.renderPosts(post))}
+      <div className="App">
+        <div className={className}>
+          <h3>All Posts!</h3>
+          {posts.map(post => this.renderPosts(post))}
+        </div>
       </div>
     );
   }
@@ -48,7 +50,9 @@ class AllPosts extends React.Component {
           <ul>
             <h3><Link to={`/users/${post.user_id}/posts/${post.post_id}`}>{post.post_title}</Link></h3>
             <p>{postSnippet}</p>
-            {post.photoarr.map(photo => this.renderPhotos(photo))}
+            <div className='PhotoSection'>
+              {post.photoarr.map(photo => this.renderPhotos(photo))}
+            </div>
           </ul>
         </div>
       </div>

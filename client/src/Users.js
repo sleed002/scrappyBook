@@ -37,10 +37,11 @@ class Users extends React.Component {
         <div className="row justify-content-md-center">
           <div className="col-sm-4">
             <div className="card-group mb-3">
+              <img src={user.user_avatar} width="auto" height="116px"  />
               <div className="card">
-                <div class="card-header">UserName</div>
-                <card-body>
-                    <Link to={`/users/${user.user_id}`}>{user.username}</Link>
+                <div class="card-header"><Link to={`/users/${user.user_id}`}>{user.username}</Link></div>
+                  <card-body>
+                    <p>{user.user_bio}</p>
                   </card-body>
                 </div>
               </div>

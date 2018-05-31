@@ -5,6 +5,7 @@
   height: 120%;
   width: 100%;
   margin: 10px;
+  background-attachment: fixed;
 }
 
 .App-title {
