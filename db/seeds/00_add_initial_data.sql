@@ -23,6 +23,6 @@ VALUES(1, 'https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif', 'Sleeping is 
 (1, 'https://media.giphy.com/media/nNxT5qXR02FOM/giphy.gif', 'This is my caption!','id1'),
 (2, 'https://media.giphy.com/media/EatwJZRUIv41G/giphy.gif', 'yay caption!', 'placeholder_id'),
 (3, 'https://media.giphy.com/media/cOmKweWa4w0XS/giphy.gif', 'I like warm hugs', 'yay_placeholder_id'),
-(3, 'https://media.giphy.com/media/tIqKXKcVwmhmU/giphy.gif','','');
+(3, 'https://media.giphy.com/media/tIqKXKcVwmhmU/giphy.gif','Snowman','plcrats');
 
 SELECT * FROM photos;
