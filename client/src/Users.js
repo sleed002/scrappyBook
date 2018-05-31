@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from "react-router-dom";
 import axios from 'axios';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 
 class Users extends React.Component {
@@ -37,7 +37,7 @@ class Users extends React.Component {
         <div className="row justify-content-md-center">
           <div className="col-sm-4">
             <div className="card-group mb-3">
-              <img src={user.user_avatar} width="auto" height="116px"  />
+              <img src={user.user_avatar} width="auto" height="116px" alt="User avatar" />
               <div className="card">
                 <div class="card-header"><Link to={`/users/${user.user_id}`}>{user.username}</Link></div>
                   <card-body>
