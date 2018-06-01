@@ -2,10 +2,16 @@
   /* SOURCE: https://stackoverflow.com/questions/23362157/how-to-make-a-css-triangle-background-on-a-div-without-using-border-and-image
   SOURCE: https://stackoverflow.com/questions/34108433/html-css-linear-gradient-not-taking-up-full-screen */
   background: linear-gradient(to bottom right, #F7D7D7 0%, #F7D7D7 50%, #FFFFFF 50%, #E3F4EC 100%);
-  height: 120%;
-  width: 100%;
   margin: 10px;
   background-attachment: fixed;
+  /* Setting screen size: https://teamtreehouse.com/community/resizing-div-automatically-depending-on-screen-size */
+  /* Prevent footer blocking content: https://stackoverflow.com/a/16245465 */
+  width:100%;
+  min-height:100vh;
+  background-size:cover;
+  overflow: scroll;
+  margin-bottom: 50px;
+  clear: both;
 }
 
 .App-title {
@@ -166,11 +172,31 @@ form {
   border: 1px solid black;
 }
 
-.UserPost>ul>h3 {
-  /* margin: 40px; */
+.UserPost > ul > h3 {
   font-family: 'Raleway Dots' !important;
   font-size: 50px !important;
-  /* text-align: left; */
+}
+
+.UserPost > ul > p{
+  text-align: left;
+  margin-left: 50px;
+}
+
+.UserPost > ul > span > a > img{
+  text-align: left;
+  margin-left: 50px;
+}
+
+.UserPost{
+  border-radius: 10px;
+  margin: 10px;
+  width: 1000px;
+  display: inline-block;
+  position: relative;
+  border: 1px dashed #6BBEF2;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  overflow: scroll;
 }
 
 .wrapper {
