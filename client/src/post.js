@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-
+import {Button} from 'reactstrap';
+import Masonry from 'react-masonry-component';
 
 class postShow extends React.Component {
   constructor(props) {
@@ -21,22 +22,54 @@ class postShow extends React.Component {
     const {post_id, user_id, post_title, post_time_date, post_text} = post;
     const {photo_url, photo_caption, photo_public_id} = photos;
     return (<div className="postShow">
-      <div className="wrapper" style={{backgroundColor: this.state.backgroundColor}}>
-         <select name="operator" id='bg' onChange={(e) => this.change(e)} value={this.state.value}>
-           <option value="rgb(236, 223, 206)">Peach</option>
-           <option value="rgb(244, 71, 83)">Red</option>
-           <option value="rgb(110, 217, 216)">Teal</option>
-           <option value="rgb(88, 182, 127)">Green</option>
-           <option value="rgb(254, 212, 49)">Yellow</option>
-         </select>
-      {photos.map(photo => this.renderPhotos(photo))}
 
-      {/* <div className="Photos">
+      <div className="container-fluid">
+        <div className="input-group mb-3">
+          <div className="custom-file">
+            <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler} className="custom-file-input" id="inputGroupFile02"></input>
+            <label className="custom-file-label" for="inputGroupFile02">Choose file</label>
+          </div>
+          <div className="input-group-append">
+            <Button className="input-group-text" onClick={this.uploadHandler} id="">Upload Photo</Button>
+          </div>
+        </div>
+
+        {/* <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
+        <button onClick={this.uploadHandler}>Upload!</button> */}
+
+        <br/>
+        <Link className="btn btn-outline-warning" to={`/users/${post.user_id}/posts/${post.post_id}/edit`}>
+          Edit
+        </Link>
+
+        <Button className="btn btn-outline-danger" onClick={() => this.handleDelete()}>Delete entry</Button>
+
+        <div className="wrapper" style={{
+            backgroundColor: this.state.backgroundColor
+          }}>
+          <select name="operator" id='bg' onChange={(e) => this.change(e)} value={this.state.value}>
+            <option value="rgb(236, 223, 206)">Peach</option>
+            <option value="rgb(244, 71, 83)">Red</option>
+            <option value="rgb(110, 217, 216)">Teal</option>
+            <option value="rgb(88, 182, 127)">Green</option>
+            <option value="rgb(254, 212, 49)">Yellow</option>
+          </select>
+
+          <h4>{post.post_title}
+          </h4>
+          <p>{post.post_time_date}
+          </p>
+          <p>{post.post_text}</p>
+
+          <Masonry>
+            {photos.map((photo, index) => this.renderPhotos(photo, index))}
+          </Masonry>
+          {/* <div className="Photos">
                {photos.map(photo => this.renderPhotos(photo))}
              </div> */
-      }
+          }
 
-      <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
+          {/* <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler}/>
       <button onClick={this.uploadHandler}>Upload!</button>
 
       <br/>
@@ -44,10 +77,11 @@ class postShow extends React.Component {
         Edit
       </Link>
       <br/>
-      <button onClick={() => this.handleDelete()}>Delete entry</button>
-    </div>
-  </div>
-  );
+      <button onClick={() => this.handleDelete()}>Delete entry</button> */
+          }
+        </div>
+      </div>
+    </div>);
   }
 
   fileHandler = (event) => {
@@ -74,9 +108,9 @@ class postShow extends React.Component {
     });
   }
 
-  renderPhotos(photo) {
+  renderPhotos(photo, index) {
     return (
-      <div className="photoAndId">
+      <div className="photoAndId" key={index}>
         <div class="card">
           <div class="card-header">Featured</div>
           <div class="card-body">
@@ -86,10 +120,8 @@ class postShow extends React.Component {
             <div class="card-footer text-muted">Caption: {photo.photo_caption}<br />Public ID: {photo.photo_public_id}</div>
           </div>
         </div>
-
           {/* <img key={photo.photo_id} src={photo.photo_url} width="400px"/> */}
           {/* <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p> */}
-
 
         {/* <h1>More Information On:</h1> */}
         <h4>{photo.post_title}
@@ -97,8 +129,14 @@ class postShow extends React.Component {
         <p>{photo.post_time_date}
         </p>
         <p>{photo.post_text}</p>
-      </div>
-    );
+      
+
+
+      <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
+        {/* <img key={photo.photo_id} src={photo.photo_url} width="400px"/> */}
+        {/* <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p> */}
+      </Link>
+    </div>);
   }
 
   componentDidMount() {
@@ -111,9 +149,9 @@ class postShow extends React.Component {
     });
   }
 
-  change (event){
-       this.setState({backgroundColor: event.target.value});
-   }
+  change(event) {
+    this.setState({backgroundColor: event.target.value});
+  }
 }
 
 export default postShow;

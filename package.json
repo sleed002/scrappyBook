@@ -39,6 +39,8 @@
     "pg-promise": "^8.4.4",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-masonry-component": "^6.2.0",
+    "react-masonry-layout": "^0.3.0",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.0.1",
     "rimraf": "^2.6.2",
