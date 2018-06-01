@@ -79,7 +79,6 @@ class User extends React.Component {
       postSnippet = post.post_text.slice(0, 100) + "..."
     }
     return (
-<<<<<<< HEAD
       <div className = "UserPost">
         <ul key={post.post_id}>
           <h3><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h3>
@@ -87,19 +86,6 @@ class User extends React.Component {
           {this.state.photos.map(photo => this.renderPhotos(userid, photo, postid))}
         </ul>
       </div>
-=======
-      <div>
-        <div key={post.post_id} className='Post'>
-          <ul>
-            {/* <h3><Link to={`/users/${userid}/posts/${postid}`}>Post Header for post #{postid}!</Link></h3> */}
-            <h4><Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link></h4>
-            <p>{postSnippet}
-            </p>
-            {this.state.photos.map(photo => this.renderPhotos(userid, photo, postid))}
-          </ul>
-        </div>
-    </div>
->>>>>>> remove duplicate posts on user entries page
     );
   }
 

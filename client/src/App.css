@@ -169,3 +169,12 @@ form {
     font-size: 50px !important;
     /* text-align: left; */
 }
+
+.wrapper {
+  margin: 2px;
+}
+
+.container-fluid {
+  padding: 10px;
+  text-align: center;
+}
