@@ -10,9 +10,8 @@ import PostNew from './PostNew';
 import PostEdit from './PostEdit';
 import EditUser from './EditUser.js';
 import AllPosts from './PostAll';
-
 import photo from './photo'
-import { BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 // SOURCE: https://reactstrap.github.io/
 import { Button, Container, Row, Col } from 'reactstrap';
 
@@ -46,10 +45,11 @@ class App extends Component {
           </Row>
           {/* SOURCE: https://getbootstrap.com/docs/4.1/components/navbar/ */}
           <footer>
+
           <nav className="navbar fixed-bottom navbar-light bg-light">
-            <a className="navbar-brand" href="/"><Button className="btn btn-sm btn-outline-secondary">Home</Button></a>
-            <a className="navbar-brand" href="/users"><Button className="btn btn-sm btn-outline-secondary">Users</Button></a>
-            <a className="navbar-brand" href="/posts"><Button className="btn btn-sm btn-outline-secondary">All Posts</Button></a>
+          <Link className="navbar-brand" Link to="/"><Button className="btn btn-sm btn-outline-secondary">Home</Button></Link>
+          <Link className="navbar-brand" Link to="/users"><Button className="btn btn-sm btn-outline-secondary">Users</Button></Link>
+          <Link className="navbar-brand" Link to="/posts"><Button className="btn btn-sm btn-outline-secondary">All Posts</Button></Link>
 
           </nav>
           </footer>
