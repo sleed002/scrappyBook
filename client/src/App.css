@@ -5,6 +5,7 @@
   height: 120%;
   width: 100%;
   margin: 10px;
+  background-attachment: fixed;
 }
 
 .App-title {
@@ -161,4 +162,11 @@ form {
 
 .pic {
   border: 1px solid black;
+}
+
+.UserPost > ul > h3{
+    /* margin: 40px; */
+    font-family: 'Raleway Dots' !important;
+    font-size: 50px !important;
+    /* text-align: left; */
 }
