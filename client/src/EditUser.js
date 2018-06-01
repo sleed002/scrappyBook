@@ -17,148 +17,112 @@ const avatars = [
 ]
 
 class EditUser extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
-    this.state = {username:"", user_nickname:"", user_bio:"", user_fave_color: "", user_avatar:""}
+    this.state = {
+      username: "",
+      user_nickname: "",
+      user_bio: "",
+      user_fave_color: "",
+      user_avatar: ""
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-render () {
-const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
+  render() {
+    const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
 
-
-  return (
-    <div className="App">
-    <div className="UserEdit">
-      <form onSubmit={this.handleSubmit}>
-        <h3>Edit a User</h3>
-        <br/>
-
-        <div className="form-group col-md-2">
-        Username:*<br/>
-        <input value={username} className="form-control"
-               name="username"
-               onChange={this.handleChange}
-               placeholder="username" />
-             </div>
-        <br/>
-
-        <div className="form-group col-md-2">
-        Nickname:<br/>
-        <input value={user_nickname} className="form-control"
-               name="user_nickname"
-               onChange={this.handleChange}
-               placeholder="nickname" />
-             </div>
-
-        <br/>
-
-        <div className="form-group col-md-2">
-        Bio:<br/>
-        <textarea value={user_bio} className="form-control"
-                  name="user_bio"
-                  onChange={this.handleChange}
-                  placeholder="tell us about yourself!" />
-        </div>
-
-        <br/>
-        <div className="form-group col-md-2">
-        Favorite Color:<br/>
-        <input value={user_fave_color} className="form-control"
-               name="user_fave_color"
-               onChange={this.handleChange}
-               placeholder="favorite color" />
-        <br/><br />
-        </div>
-
-        Choose Your Avatar:<br/>
-        {this.renderAvatars(avatars)}
-        <br/>
-        <input type="radio"
-               name="user_avatar"
-               value={user_avatar} />
-               <div className="form-group col-md-2">
-
-        Or enter in your own avatar URL:<br/>
-        <input size="100"
-               type="text"
-               value={user_avatar} className="form-control"
-               name="user_avatar"
-               onChange={this.handleChange}
-               placeholder="avatar image url" />
-        </div><br/>
-        <div className="form-group col-md-2">
-        <input type="submit"
-               value="Submit User!" className="form-control" />
-        <p>*Required Field</p>
+    return (<div className="App">
+      <div className="UserEdit">
+        <form onSubmit={this.handleSubmit}>
+          <h3>Edit a User</h3>
+          <br/>
+          <div className="form-group col-md-2">
+            Username:*<br/>
+            <input value={username} className="form-control" name="username" onChange={this.handleChange} placeholder="username"/>
+          </div>
+          <br/>
+          <div className="form-group col-md-2">
+            Nickname:<br/>
+            <input value={user_nickname} className="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname"/>
+          </div>
+          <br/>
+          <div className="form-group col-md-2">
+            Bio:<br/>
+            <textarea value={user_bio} className="form-control" name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!"/>
+          </div>
+          <br/>
+          <div className="form-group col-md-2">
+            Favorite Color:<br/>
+            <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color"/>
+            <br/><br/>
+          </div>
+            Choose Your Avatar:<br/> {this.renderAvatars(avatars)}
+            <br/>
+            <input type="radio" name="user_avatar" value={user_avatar}/>
+          <div className="form-group col-md-2">
+            Or enter in your own avatar URL:<br/>
+            <input size="100" type="text" value={user_avatar} className="form-control" name="user_avatar" onChange={this.handleChange} placeholder="avatar image url"/>
+          </div><br/>
+          <div className="form-group col-md-2">
+            <input type="submit" value="Submit User!" className="form-control"/>
+            <p>*Required Field</p>
+          </div>
+        </form>
       </div>
-      </form>
-    </div>
-    </div>
-  );
-}
+    </div>);
+  }
 
-renderAvatars(avatars){
-  console.log("in renderAvatars");
-  return (
-    <ul>
-      {/* {avatars.map(avatar => this.renderAvatar(avatar))} */}
-      {avatars.map((avatar,i) => {
-        return (this.renderAvatar(avatar, i))
-      })}
-    </ul>
-  );
-}
+  renderAvatars(avatars) {
+    console.log("in renderAvatars");
+    return (
+      <ul>
+      {
+        avatars.map((avatar, i) => {
+          return (this.renderAvatar(avatar, i))
+        })
+      }
+    </ul>);
+  }
 
-renderAvatar(avatar, i){
-  console.log(avatar);
-  console.log(i);
-    return(
-      // https://stackoverflow.com/a/21668071
-      <span className={"avatar-"+i}>
-        <input type="radio"
-               name="user_avatar"
-               value={avatar}
-               onChange={this.handleChange}/>
-        <img src={avatar}
-             alt={"avatar-"+i}
-             width="75px" />
-      </span>
-    )
-}
+  renderAvatar(avatar, i) {
+    console.log(avatar);
+    console.log(i);
+    return (
+    // https://stackoverflow.com/a/21668071
+    <span className={"avatar-" + i}>
+      <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
+      <img src={avatar} alt={"avatar-" + i} width="75px"/>
+    </span>)
+  }
 
-handleChange (e) {
-  const {value, name} = e.target;
-  this.setState({
-    [name]: value
-  });
-}
+  handleChange(e) {
+    const {value, name} = e.target;
+    this.setState({[name]: value});
+  }
 
-handleSubmit(e) {
-  const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
-  const { id } = this.props.match.params;
+  handleSubmit(e) {
+    const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
+    const {id} = this.props.match.params;
 
-  e.preventDefault();
+    e.preventDefault();
 
-  axios.put(`/api/users/${id}`, {username, user_nickname, user_bio, user_fave_color, user_avatar})
-  .then(res => {
-    this.props.history.push(`/users/${id}`);
-  }).catch(e => {
-    console.warn(e);
-    alert("Trouble with updating user! Please enter a unique username!")
-  })
-}
+    axios.put(`/api/users/${id}`, {username, user_nickname, user_bio, user_fave_color, user_avatar}).then(res => {
+      this.props.history.push(`/users/${id}`);
+    }).catch(e => {
+      console.warn(e);
+      alert("Trouble with updating user! Please enter a unique username!")
+    })
+  }
 
-
-
-componentDidMount () {
-  const { id } = this.props.match.params;
-  axios.get(`/api/users/${id}`).then(res => {
-    const { username, user_nickname, user_bio, user_fave_color, user_avatar } = res.data;
-    this.setState({ username, user_nickname, user_bio, user_fave_color, user_avatar });
-   });
- }
+  componentDidMount() {
+    const {id} = this.props.match.params;
+    axios.get(`/api/users/${id}`).then(res => {
+      const {username, user_nickname, user_bio, user_fave_color, user_avatar} = res.data;
+      this.setState({username, user_nickname, user_bio, user_fave_color, user_avatar});
+    });
+  }
 }
 
 export default EditUser;
