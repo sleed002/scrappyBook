@@ -172,22 +172,32 @@ Alice
 
 
 <a href="https://ibb.co/gxf7yJ"><img src="https://preview.ibb.co/cTL7yJ/Screen_Shot_2018_05_31_at_8_52_54_PM.png" alt="Screen_Shot_2018_05_31_at_8_52_54_PM" border="0"></a>
+
+
 •	Users Page
 
 
 <a href="https://ibb.co/bAdudJ"><img src="https://preview.ibb.co/dD5J5y/Screen_Shot_2018_05_31_at_8_53_11_PM.png" alt="Screen_Shot_2018_05_31_at_8_53_11_PM" border="0"></a>
+
+
 •	All Posts Page
 
 
 <a href="https://ibb.co/euz0JJ"><img src="https://preview.ibb.co/jJ3SyJ/Screen_Shot_2018_05_31_at_8_54_04_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_04_PM" border="0"></a>
+
+
 •	Single User Page
 
 
 <a href="https://ibb.co/hcZpCd"><img src="https://preview.ibb.co/cjMEdJ/Screen_Shot_2018_05_31_at_8_54_20_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_20_PM" border="0"></a>
+
+
 •	Edit/Delete User Page
 
 
 <a href="https://ibb.co/doh9Cd"><img src="https://preview.ibb.co/cugQky/Screen_Shot_2018_05_31_at_8_54_37_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_37_PM" border="0"></a>
+
+
 •	Single Edit Photo Page
 
 
