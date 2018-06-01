@@ -13,7 +13,7 @@ import AllPosts from './PostAll';
 import photo from './photo'
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 // SOURCE: https://reactstrap.github.io/
-import {Button, Container, Row, Col} from 'reactstrap';
+import {Button, Row, Col} from 'reactstrap';
 
 class App extends Component {
   render() {
@@ -23,16 +23,16 @@ class App extends Component {
         <Row>
           <Col>
             <Switch>
-              <Route exact="exact" path='/' component={Home}/>
-              <Route exact="exact" path='/users' component={Users}/>
-              <Route exact="exact" path="/users/new" component={UserNew}/>
-              <Route exact="exact" path='/users/:id/edit' component={EditUser}/>
-              <Route exact="exact" path='/users/:id' component={User}/>
-              <Route exact="exact" path="/users/:userid/posts/new" component={PostNew}/>
-              <Route exact="exact" path='/users/:user_id/posts/:post_id/edit' component={PostEdit}/>
-              <Route exact="exact" path='/users/:user_id/posts/:post_id' component={postShow}/>
-              <Route exact="exact" path='/users/:user_id/posts/:post_id/photos/:photo_public_id' component={photo}/>
-              <Route exact="exact" path='/posts' component={AllPosts}/>
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/users' component={Users}/>
+              <Route exact path="/users/new" component={UserNew}/>
+              <Route exact path='/users/:id/edit' component={EditUser}/>
+              <Route exact path='/users/:id' component={User}/>
+              <Route exact path="/users/:userid/posts/new" component={PostNew}/>
+              <Route exact path='/users/:user_id/posts/:post_id/edit' component={PostEdit}/>
+              <Route exact path='/users/:user_id/posts/:post_id' component={postShow}/>
+              <Route exact path='/users/:user_id/posts/:post_id/photos/:photo_public_id' component={photo}/>
+              <Route exact path='/posts' component={AllPosts}/>
             </Switch>
           </Col>
         </Row>
@@ -40,13 +40,13 @@ class App extends Component {
         <footer>
 
           <nav className="navbar fixed-bottom navbar-light bg-light">
-            <Link className="navbar-brand" Link="Link" to="/">
+            <Link className="navbar-brand" to="/">
               <Button className="btn btn-sm btn-outline-secondary">Home</Button>
             </Link>
-            <Link className="navbar-brand" Link="Link" to="/users">
+            <Link className="navbar-brand" to="/users">
               <Button className="btn btn-sm btn-outline-secondary">Users</Button>
             </Link>
-            <Link className="navbar-brand" Link="Link" to="/posts">
+            <Link className="navbar-brand" to="/posts">
               <Button className="btn btn-sm btn-outline-secondary">All Posts</Button>
             </Link>
 

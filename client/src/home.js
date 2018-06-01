@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 // SOURCE: https://reactstrap.github.io/
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 
 class Home extends React.Component {
   render() {

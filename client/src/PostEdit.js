@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import PostNew from './PostNew';
+// import {Link} from 'react-router-dom';
+// import PostNew from './PostNew';
 
 class PostEdit extends React.Component {
   constructor(props) {
