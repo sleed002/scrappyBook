@@ -36,16 +36,16 @@ class User extends React.Component {
 
               <div className="col-md-4">
                 <h4>
-                  <span className="usersIndicator">Name:</span>
+                  <span className="usersIndicator">Name: </span>
                   {users.username}</h4>
                 <h4>
-                  <span className="usersIndicator">Nickname:</span>
+                  <span className="usersIndicator">Nickname: </span>
                   {users.user_nickname}</h4>
                 <h4>
-                  <span className="usersIndicator">Bio:</span>
+                  <span className="usersIndicator">Bio </span>
                   {users.user_bio}</h4>
                 <h4>
-                  <span className="usersIndicator">Favorite Color:</span>
+                  <span className="usersIndicator">Favorite Color: </span>
                   {users.user_fave_color}</h4>
               </div>
 
