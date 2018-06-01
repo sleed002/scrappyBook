@@ -21,22 +21,49 @@ class Photo extends React.Component {
 
     // const {photo_url, photo_caption, photo_public_id} = photo;
 
-    return (<div className="App">
-      <div className="photo">
+    return (
+        <div className="App">
+        <div className="photo">
 
-        <img src={photo.photo_url} height="400px" alt="User Submitted Pic"></img>
-        <h2>Caption: {photo.photo_caption}</h2>
-        <br></br>
 
-        <button onClick={() => this.handleDelete()}>Delete photo</button>
-        <br></br>
-        <Link to={`/users/${user_id}/posts/${post_id}`}>Back</Link>
+             <img src={photo.photo_url} height="400px"></img>
+             <br></br>
+             Caption:<input value={photo.photo_caption} name="photo.photo_caption" onChange={this.handleChange}></input>
+             <button onClick={() => this.handleSubmit()}>Update</button>
+             <br></br>
+             <br></br>
 
-      </div>
-    </div>);
-  }
+           <button onClick={() => this.handleDelete()}>Delete photo</button>
+           <br></br>
+           <Link to={`/users/${user_id}/posts/${post_id}`}>Back</Link>
 
-  handleDelete() {
+        </div>
+        </div>
+      );
+    }
+
+    handleChange (e) {
+      const {photo} = this.state
+     const {value, name} = e.target;
+     this.setState({
+       [name]: value,
+     });
+    }
+
+    handleSubmit() {
+      const { match, history } = this.props;
+      const { user_id, post_id, photo_public_id} = match.params;
+      const {photo} = this.state
+      console.log(photo)
+      axios.put(`/api/users/${user_id}/posts/${post_id}/photos/${photo_public_id}`, photo).then(res => {
+        this.props.history.push(`/users/${user_id}/posts/${post_id}`);
+      }).catch(e => {
+        console.warn(e);
+        alert('something went wrong')
+      });
+    }
+
+    handleDelete() {
     const {match, history} = this.props;
     const {user_id, post_id, photo_public_id} = match.params;
     axios.delete(`/api/users/${user_id}/posts/${post_id}/photos/${photo_public_id}`).then(res => {
@@ -55,5 +82,6 @@ class Photo extends React.Component {
     });
   }
 }
+
 
 export default Photo;

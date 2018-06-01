@@ -122,7 +122,6 @@ User.findOnePhotoOnePost = paramsData => {
 
 //Add a single photo for a single post for a single user
 User.addOnePhotoOnePost = (paramsData, photoData) => {
-  console.log(paramsData)
   const {postid} = paramsData,
         {photo_url, photo_public_id, photo_caption} = photoData;
   return db.one(`INSERT INTO photos(post_id, photo_url, photo_public_id, photo_caption)
@@ -136,14 +135,12 @@ User.findOnePhotoAndUpdate = (paramsData, photoData) => {
         {photo_url, photo_caption, photo_public_id} = photoData;
   return db.one(`UPDATE photos
     SET photo_url = $1, photo_caption = $2, photo_public_id = $3
-    WHERE post_id = $4 AND photo_id = $5
+    WHERE post_id = $4 AND photo_public_id = $5
     RETURNING *`, [photo_url, photo_caption, photo_public_id, postid, photoid])
 };
 
 //Delete a single photo for a single post for a single user
 User.findOnePhotoAndDelete = paramsData => {
-  console.log(paramsData)
-
   const {post_id, photo_public_id} = paramsData;
   return db.one(`DELETE FROM photos
     WHERE post_id = $1 AND photo_public_id = $2

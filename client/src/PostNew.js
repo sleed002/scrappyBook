@@ -38,7 +38,9 @@ class PostNew extends React.Component {
           </div>
         </div>
       </form>
-    </div>)
+
+    </div>
+    )
   }
 
   handleChange(e) {
