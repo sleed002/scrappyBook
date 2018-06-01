@@ -42,7 +42,7 @@ class User extends React.Component {
                   <span className="usersIndicator">Nickname: </span>
                   {users.user_nickname}</h4>
                 <h4>
-                  <span className="usersIndicator">Bio </span>
+                  <span className="usersIndicator">Bio: </span>
                   {users.user_bio}</h4>
                 <h4>
                   <span className="usersIndicator">Favorite Color: </span>
@@ -113,7 +113,7 @@ class User extends React.Component {
     const {id} = match.params;
 
     axios.delete(`/api/users/${id}`).then(res => {
-      history.push('/users'); 
+      history.push('/users');
     });
   }
 

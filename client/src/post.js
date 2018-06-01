@@ -37,8 +37,8 @@ class postShow extends React.Component {
         </div>
         <br/>
         <div className="postInfo">
-          <h5>{post.post_title}
-          </h5>
+          <h4><span className="postTitleUserPage">{post.post_title}
+          </span></h4>
           <p>{post.post_time_date}
           </p>
           <p>{post.post_text}</p>
@@ -92,7 +92,7 @@ class postShow extends React.Component {
             <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} height="250px"/></Link>
           </p>
 
-          <div className="card-footer text-muted">Caption: {photo.photo_caption}<br/>Public ID: {photo.photo_public_id}</div>
+          <div className="card-footer text-muted">Caption: {photo.photo_caption}<br/></div>
         </div>
       </div>
 

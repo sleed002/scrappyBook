@@ -31,7 +31,6 @@
 }
 
 /* APP LETTERS ONLY */
-
 .appcolors {
   font-family: 'Raleway Dots';
   color: #F6454F;
@@ -46,9 +45,7 @@ h3 {
 }
 
 /* https://www.w3schools.com/howto/howto_css_vertical_line.asp */
-
 /* HOME PAGE */
-
 .line {
   border-left: 8px solid white;
   margin-left: 20px;
@@ -136,6 +133,12 @@ ul {
   width: 100px;
 }
 
+.UserName {
+  font-family: 'Quicksand';
+  font-size: 20px;
+}
+
+
 .photo {
   text-align: center;
 }
@@ -148,7 +151,7 @@ ul {
   width: 80%;
   margin: auto;
   margin-top: 10px;
-  border: 1px solid rgba(0, 0, 0, .1);
+
 }
 
 .photoAndId {
@@ -222,5 +225,19 @@ form {
 
 .form-group {
   font-family: 'Quicksand';
+}
 
+.chooseAvatarText {
+  font-family: 'Quicksand';
+
+}
+
+.postInfo {
+  font-family: 'Quicksand';
+
+}
+
+.postTitleUserPage {
+  font-family: 'Raleway Dots';
+  font-size: 40px;
 }

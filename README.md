@@ -138,7 +138,7 @@ Alice
 
 •	Update ReadMe
 
-•	Deploy game on github pages
+•	Deploy on Heroku
 
 •	Commit and Push
 

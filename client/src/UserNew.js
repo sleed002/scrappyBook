@@ -53,8 +53,8 @@ class UserNew extends React.Component {
               <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color"/>
             </div><br/>
 
-            Choose Your Avatar:<br/> {this.renderAvatars(avatars)}
-            <br/>
+            <div className="chooseAvatarText"> Choose Your Avatar:<br/> {this.renderAvatars(avatars)}
+            <br/></div>
             <input type="radio" name="user_avatar" value={user_avatar}/>
 
             <div className="form-group col-md-2">
@@ -87,7 +87,7 @@ class UserNew extends React.Component {
     // https://stackoverflow.com/a/21668071
     <span key={"avatar-" + i}>
       <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
-      <img src={avatar} alt={"avatar-" + i} width="75px"/>
+      <img src={avatar} alt={"avatar-" + i} width="65px"/>
     </span>)
   }
 
