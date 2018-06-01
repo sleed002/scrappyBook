@@ -23,7 +23,7 @@ class Users extends React.Component {
         <ul>
           {users.map(user => this.renderUserLink(user))}
         </ul>
-        <NavLink className="NewUsersLink" exact="exact" to="/users/new">
+        <NavLink className="NewUsersLink" exact to="/users/new">
           <Button className="btn btn-link">Create New User</Button>
         </NavLink>
       </div>
@@ -37,7 +37,7 @@ class Users extends React.Component {
           <div className="card-group mb-3">
             <img src={user.user_avatar} width="auto" height="116px" alt="User avatar"/>
             <div className="card">
-              <div class="card-header">
+              <div className="card-header">
                 <Link to={`/users/${user.user_id}`}>{user.username}</Link>
               </div>
               <card-body>

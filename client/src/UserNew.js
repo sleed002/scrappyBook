@@ -39,12 +39,12 @@ class UserNew extends React.Component {
           <div className="AddUser">
 
             <div className="form-group col-md-2">Username:*<br/>
-              <input value={username} class="form-control" name="username" onChange={this.handleChange} placeholder="username"/>
+              <input value={username} className="form-control" name="username" onChange={this.handleChange} placeholder="username"/>
             </div>
 
             <div className="form-group col-md-2">
               Nickname:<br/>
-              <input value={user_nickname} class="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname"/></div><br/>
+              <input value={user_nickname} className="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname"/></div><br/>
 
             <div className="form-group col-md-2">Bio:<br/>
               <textarea value={user_bio} className="form-control" name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!"/>
