@@ -21,55 +21,41 @@ class postShow extends React.Component {
 
     const {post_id, user_id, post_title, post_time_date, post_text} = post;
     const {photo_url, photo_caption, photo_public_id} = photos;
-    return (<div className="postShow">
+    return (
+      <div className="App">
+      <div className="postShow">
 
       <div className="container-fluid">
-        <div className="input-group mb-3">
-          <div className="custom-file">
-            <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler} className="custom-file-input" id="inputGroupFile02"></input>
-            <label className="custom-file-label" for="inputGroupFile02">Choose file</label>
-          </div>
-          <div className="input-group-append">
-            <Button className="input-group-text" onClick={this.uploadHandler} id="">Upload Photo</Button>
-          </div>
-        </div>
-
+        <input type="file" name="sampleFile" encType="multipart/form-data" onChange={this.fileHandler} />
+        <button className="btn btn-light" onClick={this.uploadHandler}>Upload!</button>
+        <br /><br />
         <div className="row">
-          <Link className="btn btn-outline-warning" to={`/users/${post.user_id}/posts/${post.post_id}/edit`}>Edit
+          <Link className="btn btn-outline-secondary" to={`/users/${post.user_id}/posts/${post.post_id}/edit`}>Edit Post
           </Link>
-          <Button className="btn btn-outline-danger" onClick={() => this.handleDelete()}>Delete entry</Button>
+          <Button className="btn btn-outline-secondary" onClick={() => this.handleDelete()}>Delete entry</Button>
         </div>
-
-
         <br/>
-
-        <div className="wrapper" style={{
-            backgroundColor: this.state.backgroundColor
-          }}>
-          <select name="operator" id='bg' onChange={(e) => this.change(e)} value={this.state.value}>
-            <option value="rgb(236, 223, 206)">Peach</option>
-            <option value="rgb(244, 71, 83)">Red</option>
-            <option value="rgb(110, 217, 216)">Teal</option>
-            <option value="rgb(88, 182, 127)">Green</option>
-            <option value="rgb(254, 212, 49)">Yellow</option>
-          </select>
-
+        <div className="postInfo">
           <h5>{post.post_title}
           </h5>
           <p>{post.post_time_date}
           </p>
           <p>{post.post_text}</p>
-
-{/* SOURCE: [Alice] Buddy assisted with Masonry
-  SOURCE: https://stackoverflow.com/questions/27892267/masonry-columnwidth
-  SOURCE: https://www.npmjs.com/package/react-masonry-layout */}
-          <Masonry>
-            {photos.map((photo, index) => this.renderPhotos(photo, index))}
-          </Masonry>
         </div>
 
+        {/* SOURCE: [Alice] Buddy assisted with Masonry
+  SOURCE: https://stackoverflow.com/questions/27892267/masonry-columnwidth
+  SOURCE: https://www.npmjs.com/package/react-masonry-layout */
+        }
+        <Masonry>
+          {photos.map((photo, index) => this.renderPhotos(photo, index))}
+        </Masonry>
+
       </div>
-    </div>);
+    </div>
+  </div>
+
+  );
   }
 
   fileHandler = (event) => {
@@ -97,22 +83,19 @@ class postShow extends React.Component {
 
   renderPhotos(photo, index) {
     return (<div className="photoAndId" key={index}>
-      <div class="card">
-        <div class="card-header">Featured</div>
-        <div class="card-body">
-          <h5 class="card-title"></h5>
-          <p class="card-text">
-            <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} width="400px"/></Link>
+      <div className="card">
+        <div className="card-header"></div>
+        <div className="card-body">
+          <h5 className="card-title"></h5>
+          <p className="card-text">
+            <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} height="250px"/></Link>
           </p>
 
-          <div class="card-footer text-muted">Caption: {photo.photo_caption}<br/>Public ID: {photo.photo_public_id}</div>
+          <div className="card-footer text-muted">Caption: {photo.photo_caption}<br/>Public ID: {photo.photo_public_id}</div>
         </div>
       </div>
 
-
-
-      <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
-      </Link>
+      <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}></Link>
     </div>);
   }
 
