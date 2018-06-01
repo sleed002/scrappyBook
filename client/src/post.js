@@ -33,12 +33,15 @@ class postShow extends React.Component {
             <Button className="input-group-text" onClick={this.uploadHandler} id="">Upload Photo</Button>
           </div>
         </div>
-        <br/>
-        <Link className="btn btn-outline-warning" to={`/users/${post.user_id}/posts/${post.post_id}/edit`}>
-          Edit
-        </Link>
 
-        <Button className="btn btn-outline-danger" onClick={() => this.handleDelete()}>Delete entry</Button>
+        <div className="row">
+          <Link className="btn btn-outline-warning" to={`/users/${post.user_id}/posts/${post.post_id}/edit`}>Edit
+          </Link>
+          <Button className="btn btn-outline-danger" onClick={() => this.handleDelete()}>Delete entry</Button>
+        </div>
+
+
+        <br/>
 
         <div className="wrapper" style={{
             backgroundColor: this.state.backgroundColor
@@ -57,10 +60,14 @@ class postShow extends React.Component {
           </p>
           <p>{post.post_text}</p>
 
+{/* SOURCE: [Alice] Buddy assisted with Masonry
+  SOURCE: https://stackoverflow.com/questions/27892267/masonry-columnwidth
+  SOURCE: https://www.npmjs.com/package/react-masonry-layout */}
           <Masonry>
             {photos.map((photo, index) => this.renderPhotos(photo, index))}
           </Masonry>
         </div>
+
       </div>
     </div>);
   }
@@ -97,15 +104,14 @@ class postShow extends React.Component {
           <p class="card-text">
             <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} width="400px"/></Link>
           </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+
           <div class="card-footer text-muted">Caption: {photo.photo_caption}<br/>Public ID: {photo.photo_public_id}</div>
         </div>
       </div>
-      <h4>{photo.post_title}
-      </h4>
-      <p>{photo.post_time_date}
-      </p>
-      <p>{photo.post_text}</p>
+
+<h4>{photo.post_title}</h4>
+<p>{photo.post_time_date}</p>
+<p>{photo.post_text}</p>
 
       <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
       </Link>
