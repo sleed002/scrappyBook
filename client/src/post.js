@@ -109,9 +109,7 @@ class postShow extends React.Component {
         </div>
       </div>
 
-<h4>{photo.post_title}</h4>
-<p>{photo.post_time_date}</p>
-<p>{photo.post_text}</p>
+
 
       <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
       </Link>
