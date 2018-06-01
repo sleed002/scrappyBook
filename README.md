@@ -163,20 +163,21 @@ Alice
 <p>Some of our struggles included resolving git issues, cloudinary (image hosting site), and heroku deployment. Git issues included: merge conflicts and git rebase.  We worked through merge conflicts by collaborating with our team members. Cloudinary required a lot of prep work in terms of every group member making the .env file, adding the api and secret api key,  configuring the Cloudinary update as well as sending the correct request and receiving the correct response. We are working through our heroku deployment issues.  We learned that communication is key when working through git conflicts.</p>
 
 ## App
+## App
 <p>https://scrappbook.herokuapp.com/</p>
 <p style="text-align:center">
 •	Home Page
-<https://ibb.co/gxf7yJ>
+<a href="https://ibb.co/gxf7yJ"><img src="https://preview.ibb.co/cTL7yJ/Screen_Shot_2018_05_31_at_8_52_54_PM.png" alt="Screen_Shot_2018_05_31_at_8_52_54_PM" border="0"></a>
 •	Users Page
-<https://ibb.co/bAdudJ>
+<a href="https://ibb.co/bAdudJ"><img src="https://preview.ibb.co/dD5J5y/Screen_Shot_2018_05_31_at_8_53_11_PM.png" alt="Screen_Shot_2018_05_31_at_8_53_11_PM" border="0"></a>
 •	All Posts Page
-<https://ibb.co/euz0JJ>
+<a href="https://ibb.co/euz0JJ"><img src="https://preview.ibb.co/jJ3SyJ/Screen_Shot_2018_05_31_at_8_54_04_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_04_PM" border="0"></a>
 •	Single User Page
-<https://ibb.co/hcZpCd>
+<a href="https://ibb.co/hcZpCd"><img src="https://preview.ibb.co/cjMEdJ/Screen_Shot_2018_05_31_at_8_54_20_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_20_PM" border="0"></a>
 •	Edit/Delete User Page
-<https://ibb.co/doh9Cd>
+<a href="https://ibb.co/doh9Cd"><img src="https://preview.ibb.co/cugQky/Screen_Shot_2018_05_31_at_8_54_37_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_37_PM" border="0"></a>
 •	Single Edit Photo Page
-<https://ibb.co/bPN9Cd>
+<a href="https://ibb.co/bPN9Cd"><img src="https://preview.ibb.co/cvE0JJ/Screen_Shot_2018_05_31_at_8_55_51_PM.png" alt="Screen_Shot_2018_05_31_at_8_55_51_PM" border="0"></a><br /></a>
 </p>
 
 
