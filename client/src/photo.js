@@ -12,6 +12,8 @@ class Photo extends React.Component {
 
   render() {
     const { photo } = this.state;
+    const { match, history } = this.props;
+    const { user_id, post_id} = match.params;
     if (!photo) {
       return <div>Looking for Photo..</div>;}
 
@@ -23,16 +25,15 @@ class Photo extends React.Component {
 
 
 
-          <h1>{photo.photo_caption}</h1>
+
              <img src={photo.photo_url} height="400px"></img>
-
-             {/* <img src={`http://res.cloudinary.com/fotobooth/image/upload/c_scale,e_grayscale,r_0,w_371/v1527790166/sao0kyby9takvjl3pcnu.gif`} height="400px"></img> */}
-
-
-             {/* <p>{photo.photo_public_id}</p> */}
+             <h2>Caption: {photo.photo_caption}</h2>
+             <br></br>
 
 
            <button onClick={() => this.handleDelete()}>Delete photo</button>
+           <br></br>
+           <Link to={`/users/${user_id}/posts/${post_id}`}>Back</Link>
 
         </div>
         </div>
@@ -47,7 +48,6 @@ class Photo extends React.Component {
 
         history.push(`/users/${user_id}/posts/${post_id}`);
 
-        history.push(`/users/${user_id}/posts`);
 
       });
     }

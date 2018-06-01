@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import MasonryLayout from 'react-masonry-layout';
+
 
 class postShow extends React.Component {
   constructor(props) {
@@ -81,15 +81,15 @@ class postShow extends React.Component {
           <div class="card-header">Featured</div>
           <div class="card-body">
             <h5 class="card-title"></h5>
-            <p class="card-text"><img className="imageResize" key={photo.photo_id} src={photo.photo_url} width="400px"/></p>
+            <p class="card-text"><Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} width="400px"/></Link></p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
             <div class="card-footer text-muted">Caption: {photo.photo_caption}<br />Public ID: {photo.photo_public_id}</div>
           </div>
         </div>
-        <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}>
+
           {/* <img key={photo.photo_id} src={photo.photo_url} width="400px"/> */}
           {/* <p>Public ID: {photo.photo_public_id}, Caption: {photo.photo_caption}</p> */}
-        </Link>
+
 
         {/* <h1>More Information On:</h1> */}
         <h4>{photo.post_title}
