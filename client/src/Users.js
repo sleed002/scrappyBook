@@ -32,16 +32,17 @@ class Users extends React.Component {
 
   renderUserLink(user) {
     return (<li key={user.user_id} className="UserName">
+
       <div className="row justify-content-md-center">
         <div className="col-sm-4">
           <div className="card-group mb-3">
             <img src={user.user_avatar} width="auto" height="116px" alt="User avatar"/>
-            <div className="card">
-              <div className="card-header">
-                <Link to={`/users/${user.user_id}`}>{user.username}</Link>
-              </div>
+            <div className="card"><span className="userNameText">
+              {/* <div className="card-header"> */}
+                <Link to={`/users/${user.user_id}`}>{user.username}</Link></span>
+              {/* </div> */}
               <card-body>
-                <p>{user.user_bio}</p>
+                <span className="userBioText"><p>{user.user_bio}</p></span>
               </card-body>
             </div>
           </div>

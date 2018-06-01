@@ -93,7 +93,7 @@ class EditUser extends React.Component {
     // https://stackoverflow.com/a/21668071
     <span className={"avatar-" + i}>
       <input type="radio" name="user_avatar" value={avatar} onChange={this.handleChange}/>
-      <img src={avatar} alt={"avatar-" + i} width="75px"/>
+      <img src={avatar} alt={"avatar-" + i} width="65px"/>
     </span>)
   }
 
