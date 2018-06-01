@@ -201,9 +201,19 @@ form {
 
 .wrapper {
   margin: 2px;
+  display: inline;
 }
 
 .container-fluid {
   padding: 10px;
   text-align: center;
+}
+
+.PostEdit {
+  padding: 10px;
+}
+
+.form-group {
+  font-family: 'Quicksand';
+
 }

@@ -19,15 +19,31 @@ class PostEdit extends React.Component {
   render() {
     const {post_title, post_text, post_time_date} = this.state;
 
-    return (<div className="PostEdit">
-      Post Title:
-      <input value={post_title} name="post_title" onChange={this.handleChange}/>
-      Post Text:
-      <input value={post_text} name="post_text" onChange={this.handleChange}/>
-      Post Time:
-      <input value={post_time_date} name="post_time_date" onChange={this.handleChange}/>
-      <br/>
-      <button onClick={this.handleSubmit}>Update Post</button>
+    return (<div className="App">
+      <h3>Edit a Post</h3>
+      <div className="PostEdit">
+
+        <div className="form-group col-md-2">
+          <h4>Post Title:</h4>
+          <input value={post_title} className="form-control" name="post_title" onChange={this.handleChange}/></div>
+
+        <div class="form-group col-md-6">
+          <label for="exampleFormControlTextarea1">
+            <h4>Post Text</h4>
+          </label>
+          {/* Post Text: <input value={post_text} className="form-control" id="exampleFormControlTextarea1" rows="3" name="post_text" onChange={this.handleChange}/></div> */}
+          <textarea class="form-control" value={post_text} id="exampleFormControlTextarea1" rows="3" name="post_text" onChange={this.handleChange}></textarea>
+        </div>
+
+        <div className="form-group col-md-2">
+          <h4>Post Time:</h4>
+          <input value={post_time_date} className="form-control" name="post_time_date" onChange={this.handleChange}/>
+          <br/></div>
+
+        <div className="form-group col-md-2">
+          <button className="form-control" onClick={this.handleSubmit}>Update Post</button>
+        </div>
+      </div>
     </div>)
   }
 
@@ -52,7 +68,7 @@ class PostEdit extends React.Component {
     const {post_id} = this.props.match.params;
     const {user_id} = this.props.match.params;
     axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
-      const {post_title, post_text} = res.data; 
+      const {post_title, post_text} = res.data;
       this.setState({post_title, post_text});
     });
   }
