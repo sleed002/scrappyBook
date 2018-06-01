@@ -1,6 +1,8 @@
 # Project-Three
 Flex Froggies Group Project
 
+<a href="https://imgbb.com/"><img src="https://preview.ibb.co/mjRVJJ/frogjump2.gif" alt="frogjump2" border="0"></a>
+
 ## Introduction
 
 **ScrapBook**: Create memories from birthday parties, trips to the zoo, big milestones, etc. in ScrapBook. Users can create a post (text or photo), add pictures and captions, edit their posts, and delete memories.
