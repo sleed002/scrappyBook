@@ -20,6 +20,7 @@ class PostEdit extends React.Component {
     const {post_title, post_text, post_time_date} = this.state;
 
     return (<div className="App">
+      <h3>Edit a Post</h3>
       <div className="PostEdit">
 
         <div className="form-group col-md-2">
@@ -27,7 +28,9 @@ class PostEdit extends React.Component {
           <input value={post_title} className="form-control" name="post_title" onChange={this.handleChange}/></div>
 
         <div class="form-group col-md-6">
-          <label for="exampleFormControlTextarea1"><h4>Post Text</h4></label>
+          <label for="exampleFormControlTextarea1">
+            <h4>Post Text</h4>
+          </label>
           {/* Post Text: <input value={post_text} className="form-control" id="exampleFormControlTextarea1" rows="3" name="post_text" onChange={this.handleChange}/></div> */}
           <textarea class="form-control" value={post_text} id="exampleFormControlTextarea1" rows="3" name="post_text" onChange={this.handleChange}></textarea>
         </div>
@@ -36,7 +39,10 @@ class PostEdit extends React.Component {
           <h4>Post Time:</h4>
           <input value={post_time_date} className="form-control" name="post_time_date" onChange={this.handleChange}/>
           <br/></div>
-        <button className="btn btn-light" onClick={this.handleSubmit}>Update Post</button>
+
+        <div className="form-group col-md-2">
+          <button className="form-control" onClick={this.handleSubmit}>Update Post</button>
+        </div>
       </div>
     </div>)
   }

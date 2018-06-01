@@ -19,6 +19,8 @@ class PostNew extends React.Component {
     const {post_title, post_text, post_time_date} = this.state;
     return (<div className="App">
       <form onSubmit={this.handleSubmit}>
+        <h3>Create a New Post</h3>
+
 
         <div className="AddPost">My Scrapbook Entry:
 
