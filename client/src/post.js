@@ -54,8 +54,8 @@ class postShow extends React.Component {
             <option value="rgb(254, 212, 49)">Yellow</option>
           </select>
 
-          <h4>{post.post_title}
-          </h4>
+          <h5>{post.post_title}
+          </h5>
           <p>{post.post_time_date}
           </p>
           <p>{post.post_text}</p>
