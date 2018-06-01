@@ -182,9 +182,8 @@ form {
   margin-left: 50px;
 }
 
-.UserPost > ul > span > a > img{
-  text-align: left;
-  margin-left: 50px;
+.UserPost > ul > div > span > a > img{
+  margin: 5px;
 }
 
 .UserPost{
@@ -197,6 +196,13 @@ form {
   background-color: rgba(255, 255, 255, 0.6);
   padding: 10px;
   overflow: scroll;
+}
+
+.UserPhotosDiv{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-left: 50px;
 }
 
 .wrapper {

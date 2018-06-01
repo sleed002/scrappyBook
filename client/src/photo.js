@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 
@@ -13,18 +13,18 @@ class Photo extends React.Component {
 
   render() {
     const {photo} = this.state;
-    const {match, history} = this.props;
+    const {match} = this.props;
     const {user_id, post_id} = match.params;
     if (!photo) {
       return <div>Looking for Photo..</div>;
     }
 
-    const {photo_url, photo_caption, photo_public_id} = photo;
+    // const {photo_url, photo_caption, photo_public_id} = photo;
 
     return (<div className="App">
       <div className="photo">
 
-        <img src={photo.photo_url} height="400px"></img>
+        <img src={photo.photo_url} height="400px" alt="User Submitted Pic"></img>
         <h2>Caption: {photo.photo_caption}</h2>
         <br></br>
 
@@ -49,7 +49,7 @@ class Photo extends React.Component {
     axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
       this.setState({post: res.data})
     });
-    
+
     axios.get(`/api/users/${user_id}/posts/${post_id}/photos/${photo_public_id}`).then(res => {
       this.setState({photo: res.data});
     });

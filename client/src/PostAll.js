@@ -66,7 +66,7 @@ class AllPosts extends React.Component {
   }
 
   renderPhotos(photo) {
-    return (<img key={photo} src={photo} height="150px" className="PostPreviewImg"/>)
+    return (<img key={photo} src={photo} height="150px" className="PostPreviewImg" alt="User Submitted Pic"/>)
   }
 
   componentDidMount() {

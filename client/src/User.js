@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {Button, Container, Row, Col} from 'reactstrap';
+import {Button} from 'reactstrap';
 
 class User extends React.Component {
   constructor(props) {
@@ -81,13 +81,15 @@ class User extends React.Component {
     } else {
       postSnippet = post.post_text.slice(0, 100) + "..."
     }
-    return (<div className="UserPost">
-      <ul key={post.post_id}>
+    return (<div className="UserPost" key={post.post_id}>
+      <ul>
         <h3>
           <Link to={`/users/${userid}/posts/${postid}`}>{post.post_title}</Link>
         </h3>
         <p>{postSnippet}</p>
-        {this.state.photos.map(photo => this.renderPhotos(userid, photo, postid))}
+        <div className="UserPhotosDiv">
+          {this.state.photos.map(photo => this.renderPhotos(userid, photo, postid))}
+        </div>
       </ul>
     </div>);
   }
