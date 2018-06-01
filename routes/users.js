@@ -116,10 +116,10 @@ UserRouter.post("/:userid/posts/:postid", (req, res) => {
     api_secret: process.env.APISECRET
   });
 
-  mkdirp('Images/'+ id + "/", function(err) {
+  mkdirp('images/'+ id + "/", function(err) {
   }); //make a directory folder using each event ID
   // Use the mv() method to place the file in this folder
-  let path = 'Images/'+ id + "/" + sampleFile.name
+  let path = 'images/'+ id + "/" + sampleFile.name
   sampleFile.mv(path, function(err) {
     if (err)
     return res.status(500).send(err);
@@ -135,13 +135,13 @@ UserRouter.post("/:userid/posts/:postid", (req, res) => {
 
     User.addOnePhotoOnePost(req.params, photoAdd)
     .then(updatedUserPost => {
-      rimraf('Images/'+ id + "/" + sampleFile.name, function(err) {
+      rimraf('images/'+ id + "/" + sampleFile.name, function(err) {
         console.log(err)
         if (err)
         //rimraf error handle
         return res.status(500).send(err);
       })
-      rimraf('Images/'+ id + "/", function(err) {
+      rimraf('images/'+ id + "/", function(err) {
         console.log(err)
         if (err)
         //rimraf error handle
