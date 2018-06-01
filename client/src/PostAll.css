@@ -1,4 +1,4 @@
-.UserAndPostSection{
+.UserAndPostSection {
   display: inline-block;
   width: 2000px;
   display: flex;
@@ -7,11 +7,11 @@
   font-family: 'Quicksand';
 }
 
-.UserSection{
+.UserSection {
   display: inline-block;
   position: relative;
   border: 1px dashed #6BBEF2;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 20px;
   height: 350px;
   margin: 10px;
@@ -19,7 +19,7 @@
   border-radius: 10px;
 }
 
-.PostSection{
+.PostSection {
   border-radius: 10px;
   margin: 10px;
   height: 350px;
@@ -27,27 +27,27 @@
   display: inline-block;
   position: relative;
   border: 1px dashed #6BBEF2;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 10px;
   overflow: scroll;
 }
 
-.PostPreviewImg{
+.PostPreviewImg {
   margin: 5px;
 }
 
-.PostSection > ul > h3 {
+.PostSection>ul>h3 {
   margin: 10px;
   font-family: 'Raleway Dots' !important;
   font-size: 50px !important;
   text-align: left;
 }
 
-.UserSection > img {
+.UserSection>img {
   margin: 20px 0px;
 }
 
-.PostSection > ul > p{
+.PostSection>ul>p {
   text-align: left;
   padding: 0px 20px;
 }

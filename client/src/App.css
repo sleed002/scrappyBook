@@ -24,6 +24,7 @@
 }
 
 /* APP LETTERS ONLY */
+
 .appcolors {
   font-family: 'Raleway Dots';
   color: #F6454F;
@@ -38,7 +39,9 @@ h3 {
 }
 
 /* https://www.w3schools.com/howto/howto_css_vertical_line.asp */
+
 /* HOME PAGE */
+
 .line {
   border-left: 8px solid white;
   margin-left: 20px;
@@ -46,7 +49,7 @@ h3 {
 
 .NavigationBar {
   bottom: 0;
-  font-family:'Nunito';
+  font-family: 'Nunito';
   /* padding: 10px; */
   background-color: #F7D7D7;
   height: 50px;
@@ -69,6 +72,7 @@ h3 {
 }
 
 /*SOURCE: https://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets  */
+
 ul {
   list-style-type: none;
   text-align: center;
@@ -76,6 +80,7 @@ ul {
 }
 
 /* https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bootstrap */
+
 .btn-link {
   color: black !important;
   background-color: #F7D7D7 !important;
@@ -91,7 +96,6 @@ ul {
   margin-right: 100px;
   font-family: 'Raleway Dots';
 }
-
 
 .card text-center {
   background-color: black;
@@ -135,9 +139,9 @@ ul {
   justify-content: space-around;
   padding: 0px;
   width: 80%;
-	margin: auto;
-	margin-top: 10px;
-	border: 1px solid rgba(0,0,0,.1);
+  margin: auto;
+  margin-top: 10px;
+  border: 1px solid rgba(0, 0, 0, .1);
 }
 
 .photoAndId {
@@ -152,7 +156,6 @@ ul {
 
 .imageResize {
   max-width: 100%;
-
 }
 
 form {
@@ -163,11 +166,11 @@ form {
   border: 1px solid black;
 }
 
-.UserPost > ul > h3{
-    /* margin: 40px; */
-    font-family: 'Raleway Dots' !important;
-    font-size: 50px !important;
-    /* text-align: left; */
+.UserPost>ul>h3 {
+  /* margin: 40px; */
+  font-family: 'Raleway Dots' !important;
+  font-size: 50px !important;
+  /* text-align: left; */
 }
 
 .wrapper {

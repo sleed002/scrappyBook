@@ -16,15 +16,11 @@ class Home extends React.Component {
           </div>
           <p className="description">Make memories and save them on ScrAPP Book,
             the online destination for all your fave moments.</p>
-          {/* <Button color="Secondary" onClick={this.handleSubmit}>
-            All Users
-          </Button> */}
         </div>
       </Router>
     );
   }
 }
-
 
 
 export default Home;
