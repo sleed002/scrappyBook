@@ -157,5 +157,28 @@ Alice
 <img src="images/story-entry-single-user.png">
 •	Single User New Story Added Page
 <img src="images/new-story-added.png">
-
 </p>
+
+## Struggles
+<p>Some of our struggles included resolving git issues, cloudinary (image hosting site), and heroku deployment. Git issues included: merge conflicts and git rebase.  We worked through merge conflicts by collaborating with our team members. Cloudinary required a lot of prep work in terms of every group member making the .env file, adding the api and secret api key,  configuring the Cloudinary update as well as sending the correct request and receiving the correct response. We are working through our heroku deployment issues.  We learned that communication is key when working through git conflicts.</p>
+
+## App
+<p>https://scrappbook.herokuapp.com/</p>
+<p style="text-align:center">
+•	Home Page
+<https://ibb.co/gxf7yJ>
+•	Users Page
+<https://ibb.co/bAdudJ>
+•	All Posts Page
+<https://ibb.co/euz0JJ>
+•	Single User Page
+<https://ibb.co/hcZpCd>
+•	Edit/Delete User Page
+<https://ibb.co/doh9Cd>
+•	Single Edit Photo Page
+<https://ibb.co/bPN9Cd>
+</p>
+
+
+## Future Goals
+<p>Tell us what would like to add/fix/remove/change with more time</p>
