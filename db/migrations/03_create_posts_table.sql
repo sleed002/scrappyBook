@@ -1,4 +1,4 @@
-\c scrapbook_db
+
 
 CREATE TABLE posts(
   post_id serial PRIMARY KEY,

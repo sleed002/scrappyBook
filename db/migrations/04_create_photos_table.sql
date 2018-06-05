@@ -1,4 +1,4 @@
-\c scrapbook_db
+
 
 CREATE TABLE photos(
   photo_id serial PRIMARY KEY,

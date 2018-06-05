@@ -1,4 +1,4 @@
-\c scrapbook_db
+
 
 ALTER TABLE posts ADD COLUMN post_title varchar(2000) NOT NULL;
 ALTER TABLE photos ADD COLUMN photo_caption varchar(2000);

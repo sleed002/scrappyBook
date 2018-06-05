@@ -1,4 +1,4 @@
-\c scrapbook_db
+
 
 INSERT INTO users(username, user_nickname, user_bio, user_fave_color, user_avatar)
 VALUES('alicek', 'Alice', 'I love plantain chips', 'pink', 'https://mir-s3-cdn-cf.behance.net/project_modules/disp/f9fa8a33850498.56ba69ac2cc3a.png'),
