@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {Button} from 'reactstrap';
@@ -20,8 +20,8 @@ class postShow extends React.Component {
       return <div>Looking for Post..</div>;
     }
 
-    const {post_id, user_id, post_title, post_time_date, post_text} = post;
-    const {photo_url, photo_caption, photo_public_id} = photos;
+    // const {post_id, user_id, post_title, post_time_date, post_text} = post;
+    // const {photo_url, photo_caption, photo_public_id} = photos;
     return (
       <div className="App">
       <div className="postShow">
@@ -64,14 +64,19 @@ class postShow extends React.Component {
   }
 
   uploadHandler = (event) => {
-    const {match, history} = this.props;
+    const {match} = this.props;
     const {user_id} = match.params;
     const {post_id} = match.params;
     const formData = new FormData()
+    if (this.state.selectedFile === undefined) {
+      alert("choose a photo first")
+      return false}
     formData.append('sampleFile', this.state.selectedFile, this.state.selectedFile.name)
     axios.post(`/api/users/${user_id}/posts/${post_id}`, formData).then(res => {
-      history.push(`/users/${user_id}`);
+      this.fetchData();
+      // history.push(`/users/${user_id}/posts/${post_id}`)
     })
+
   };
 
   handleDelete() {
@@ -87,12 +92,12 @@ class postShow extends React.Component {
       <div className="card">
         <div className="card-header"></div>
         <div className="card-body">
-          <h5 className="card-title"></h5>
+          {/* <h5 className="card-title"></h5> */}
           <p className="card-text">
-            <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} height="250px"/></Link>
+            <Link to={`${photo.post_id}/photos/${photo.photo_public_id}`}><img className="imageResize" key={photo.photo_id} src={photo.photo_url} height="250px" alt = ""/></Link>
           </p>
 
-          <div className="card-footer text-muted">Caption: {photo.photo_caption}<br/></div>
+          <div className="">{photo.photo_caption}<br/></div>
         </div>
       </div>
 
@@ -100,7 +105,7 @@ class postShow extends React.Component {
     </div>);
   }
 
-  componentDidMount() {
+  fetchData () {
     const {user_id} = this.props.match.params, {post_id} = this.props.match.params;
     axios.get(`/api/users/${user_id}/posts/${post_id}`).then(res => {
       this.setState({post: res.data})
@@ -108,6 +113,10 @@ class postShow extends React.Component {
     axios.get(`/api/users/${user_id}/posts/${post_id}/photos`).then(res => {
       this.setState({photos: res.data});
     });
+  }
+
+  componentDidMount() {
+      this.fetchData();
   }
 
   change(event) {

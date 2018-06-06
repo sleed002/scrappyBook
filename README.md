@@ -199,12 +199,13 @@ Alice
 
 <a href="https://ibb.co/doh9Cd"><img src="https://preview.ibb.co/cugQky/Screen_Shot_2018_05_31_at_8_54_37_PM.png" alt="Screen_Shot_2018_05_31_at_8_54_37_PM" border="0"></a>
 
+•	Single Post Page
+
+<a href="https://ibb.co/mH1ALy"><img src="https://preview.ibb.co/g8OeDJ/Screen_Shot_2018_06_01_at_12_28_21_PM.png" alt="Screen_Shot_2018_06_01_at_12_28_21_PM" border="0"></a>
 
 •	Single Edit Photo Page
 
-
-<a href="https://ibb.co/bPN9Cd"><img src="https://preview.ibb.co/cvE0JJ/Screen_Shot_2018_05_31_at_8_55_51_PM.png" alt="Screen_Shot_2018_05_31_at_8_55_51_PM" border="0"></a><br /></a>
-</p>
+<a href="https://ibb.co/jnaFnd"><img src="https://preview.ibb.co/b4cT7d/Screen_Shot_2018_06_01_at_12_17_55_PM.png" alt="Screen_Shot_2018_06_01_at_12_17_55_PM" border="0"></a>
 
 
 ## Future Goals

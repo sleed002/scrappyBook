@@ -18,24 +18,27 @@ class PostNew extends React.Component {
   render() {
     const {post_title, post_text, post_time_date} = this.state;
     return (<div className="App">
+
       <form onSubmit={this.handleSubmit}>
         <h3>Create a New Post</h3>
 
 
-        <div className="AddPost">My Scrapbook Entry:
+        <div className="AddPost">
 
-          <div className="form-group col-md-2">Post Title:
+          <div className="userEditForm">
+          <div className="form-group col-md-2"><p>Post Title:</p>
             <input value={post_title} className="form-control" onChange={this.handleChange} name="post_title" placeholder="Your post title!"/></div>
 
-          <div className="form-group col-md-2">Post Title:
+          <div className="form-group col-md-6"><p>Post Text:</p>
             <textarea value={post_text} className="form-control" name="post_text" onChange={this.handleChange} placeholder="What did you do today?"/></div>
 
-          <div className="form-group col-md-2">Date:
+          <div className="form-group col-md-2"><p>Date:</p>
             <input value={post_time_date} className="form-control" onChange={this.handleChange} name="post_time_date"/></div>
 
-          <div className="form-group col-md-2">
+          <div className="form-group col-sm-2">
             <input type="submit" className="form-control" value="Submit Post!"/>
           </div>
+        </div>
         </div>
       </form>
 

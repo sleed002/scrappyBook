@@ -11,9 +11,7 @@ const avatars = [
   "https://mir-s3-cdn-cf.behance.net/project_modules/disp/bf6e4a33850498.56ba69ac3064f.png",
   "https://mir-s3-cdn-cf.behance.net/project_modules/disp/363e3e33850498.56ba69ac3183c.png",
   "https://mir-s3-cdn-cf.behance.net/project_modules/disp/e70b1333850498.56ba69ac32ae3.png",
-  "https://mir-s3-cdn-cf.behance.net/project_modules/disp/c7906d33850498.56ba69ac353e1.png",
-  "https://mir-s3-cdn-cf.behance.net/project_modules/disp/fd69a733850498.56ba69ac2f221.png",
-  "https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png"
+  "https://mir-s3-cdn-cf.behance.net/project_modules/disp/fd69a733850498.56ba69ac2f221.png"
 ]
 
 class UserNew extends React.Component {
@@ -32,43 +30,53 @@ class UserNew extends React.Component {
 
   render() {
     const {username, user_nickname, user_bio, user_fave_color, user_avatar} = this.state;
+
     return (<div className="App">
       <h3>Create a New User</h3><br/>
-      <div className="container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="AddUser">
+      <form onSubmit={this.handleSubmit}>
+        <br />
+        <div className="AddUser">
+          <div className="userEditForm">
 
-            <div className="form-group col-md-2">Username:*<br/>
+            <div className="form-group col-md-4">Username:*<br/>
               <input value={username} className="form-control" name="username" onChange={this.handleChange} placeholder="username"/>
             </div>
+            <br />
 
-            <div className="form-group col-md-2">
+            <div className="form-group col-md-4">
               Nickname:<br/>
               <input value={user_nickname} className="form-control" name="user_nickname" onChange={this.handleChange} placeholder="nickname"/></div><br/>
 
-            <div className="form-group col-md-2">Bio:<br/>
+            <div className="form-group col-md-4">Bio:<br/>
               <textarea value={user_bio} className="form-control" name="user_bio" onChange={this.handleChange} placeholder="tell us about yourself!"/>
-              <br/></div>
-            <div className="form-group col-md-2">Favorite Color:<br/>
+              </div><br/>
+            <div className="form-group col-md-4">Favorite Color:<br/>
               <input value={user_fave_color} className="form-control" name="user_fave_color" onChange={this.handleChange} placeholder="favorite color"/>
-            </div><br/>
+            </div><br/><br />
 
-            <div className="chooseAvatarText"> Choose Your Avatar:<br/> {this.renderAvatars(avatars)}
-            <br/></div>
-            <input type="radio" name="user_avatar" value={user_avatar}/>
+            <div className="form-group col-md-4" id="avatarForm">
+              Choose Your Avatar:
+              <div className="chooseAvatarText">
+               {this.renderAvatars(avatars)}</div>
+              <br/></div>
 
-            <div className="form-group col-md-2">
+            <br />
+            <div className="form-group col-md-4">
+              <input type="radio" name="user_avatar" value={user_avatar}/>
+              <span className="whiteText">
+                Or enter in your own avatar URL:</span>
+            <br />  </div>
+              <div className="form-group col-md-4">
+              <input size="100" type="text" className="form-control" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url"/>
+            <br /></div>
 
-              Or enter in your own avatar URL:
-              <input size="100" type="text" className="form-control" value={user_avatar} name="user_avatar" onChange={this.handleChange} placeholder="avatar image url"/></div>
-
-            <div className="form-group col-md-2">
+            <div className="form-group col-sm-2">
               <input type="submit" className="form-control" value="Submit User!"/>
               <p>*Required Field</p>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>)
   }
 

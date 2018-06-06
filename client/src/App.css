@@ -15,11 +15,13 @@
   clear: both;
 }
 
+/* HOME PAGE */
 .App-title {
   height: 200px;
   justify-content: center;
 }
 
+/* HOME PAGE */
 .App-intro {
   border-color: #EDF2EB;
   font-family: 'Bowlby One SC';
@@ -37,6 +39,7 @@
   font-size: 125px;
 }
 
+/* Edit User Page */
 h3 {
   margin: 40px;
   font-family: 'Raleway Dots' !important;
@@ -75,16 +78,27 @@ h3 {
   width: 25% !important;
 }
 
-/*SOURCE: https://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets  */
+.card {
+  width: 100% !important;
+}
 
+.card text-center {
+  background-color: black;
+  margin: 50px;
+  width: 100%;
+}
+
+/*SOURCE: https://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets  */
 ul {
   list-style-type: none;
   text-align: center;
   display: inline;
+  /* Buddy assisted with padding issue in DIV */
+  padding-left: 0px;
+
 }
 
 /* https://stackoverflow.com/questions/28261287/how-to-change-btn-color-in-bootstrap */
-
 .btn-link {
   color: black !important;
   background-color: #F7D7D7 !important;
@@ -92,6 +106,7 @@ ul {
   padding: 10px;
 }
 
+/* Home Page */
 .description {
   font-size: 18px;
   font-weight: bolder;
@@ -99,12 +114,6 @@ ul {
   width: 400px;
   margin-right: 100px;
   font-family: 'Raleway Dots';
-}
-
-.card text-center {
-  background-color: black;
-  margin: 50px;
-  width: 100%;
 }
 
 .Container {
@@ -138,7 +147,6 @@ ul {
   font-size: 20px;
 }
 
-
 .photo {
   text-align: center;
 }
@@ -158,10 +166,6 @@ ul {
   width: 40%;
   float: left;
   padding: 20px;
-}
-
-.card {
-  width: 100% !important;
 }
 
 .imageResize {
@@ -202,7 +206,7 @@ form {
   overflow: scroll;
 }
 
-.UserPhotosDiv{
+.UserPhotosDiv {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -219,17 +223,45 @@ form {
   text-align: center;
 }
 
-.PostEdit {
-  padding: 10px;
-}
-
 .form-group {
   font-family: 'Quicksand';
+  color: white;
 }
 
+/* User Edit */
+.userEditForm {
+  margin: 20px;
+  padding: 5px;
+  opacity: .8;
+  border-radius: 3px;
+  width: auto;
+  height: auto;
+  background-color: #5A443F;
+}
+
+/* User Edit */
+/* SOURCE FOR SCROLL: http://jsfiddle.net/x58RD/ */
 .chooseAvatarText {
   font-family: 'Quicksand';
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-x: scroll;
+}
 
+/* User Edit */
+#avatarForm {
+  max-width: 450px;
+  max-height: 500px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+/* User Edit */
+.whiteText {
+  color: white;
+  font-family: 'Quicksand';
+  margin: 10px;
 }
 
 .postInfo {
@@ -240,4 +272,13 @@ form {
 .postTitleUserPage {
   font-family: 'Raleway Dots';
   font-size: 40px;
+}
+
+
+.photo > img {
+  margin: 40px 0px;
+}
+
+p {
+  margin-bottom: 0px !important;
 }

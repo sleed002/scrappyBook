@@ -39,16 +39,16 @@ class AllPosts extends React.Component {
       <div className='UserSection'>
         <img src={post.user_avatar} alt="user avatar" width="100px"/>
         <p>
-          <b>Username:</b>
+          <b>Username: </b>
           {post.username}</p>
         <p>
-          <b>Nickname:</b>
+          <b>Nickname: </b>
           {this.ifFieldBlank(post.user_nickname)}</p>
         <p>
-          <b>Bio:</b>
+          <b>Bio: </b>
           {this.ifFieldBlank(post.user_bio)}</p>
         <p>
-          <b>Favorite Color:</b>
+          <b>Favorite Color: </b>
           {this.ifFieldBlank(post.user_fave_color)}</p>
       </div>
       <div className='PostSection'>
